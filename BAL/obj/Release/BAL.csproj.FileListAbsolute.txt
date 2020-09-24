@@ -1,0 +1,6 @@
+D:\GitProject\ShippingFinalCode\BAL\bin\Release\BAL.dll
+D:\GitProject\ShippingFinalCode\BAL\bin\Release\BAL.pdb
+D:\GitProject\ShippingFinalCode\BAL\obj\Release\BAL.csprojAssemblyReference.cache
+D:\GitProject\ShippingFinalCode\BAL\obj\Release\BAL.csproj.CoreCompileInputs.cache
+D:\GitProject\ShippingFinalCode\BAL\obj\Release\BAL.dll
+D:\GitProject\ShippingFinalCode\BAL\obj\Release\BAL.pdb

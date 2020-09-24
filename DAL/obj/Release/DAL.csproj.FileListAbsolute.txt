@@ -1,0 +1,9 @@
+D:\GitProject\ShippingFinalCode\DAL\bin\Release\DAL.dll.config
+D:\GitProject\ShippingFinalCode\DAL\bin\Release\DAL.dll
+D:\GitProject\ShippingFinalCode\DAL\bin\Release\DAL.pdb
+D:\GitProject\ShippingFinalCode\DAL\bin\Release\EntityFramework.dll
+D:\GitProject\ShippingFinalCode\DAL\bin\Release\EntityFramework.xml
+D:\GitProject\ShippingFinalCode\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
+D:\GitProject\ShippingFinalCode\DAL\obj\Release\DAL.csproj.CopyComplete
+D:\GitProject\ShippingFinalCode\DAL\obj\Release\DAL.dll
+D:\GitProject\ShippingFinalCode\DAL\obj\Release\DAL.pdb

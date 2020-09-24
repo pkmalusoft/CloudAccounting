@@ -1,0 +1,2618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SHIPPING_FinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AcAnalysisHeadAllocation">
+    <Key>
+      <PropertyRef Name="AcAnalysisHeadAllocationID" />
+    </Key>
+    <Property Name="AcAnalysisHeadAllocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcjournalDetailID" Type="int" />
+    <Property Name="AnalysisHeadID" Type="int" />
+    <Property Name="Amount" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'malusoft_accounts.dbo.AcBankDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AcBankDetails">
+    <Key>
+      <PropertyRef Name="AcBankDetailID" />
+    </Key>
+    <Property Name="AcBankDetailID" Type="int" Nullable="false" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChequeDate" Type="datetime" />
+    <Property Name="PartyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusTrans" Type="nvarchar" MaxLength="1" />
+    <Property Name="StatusReconciled" Type="bit" />
+    <Property Name="ValueDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AcCategory">
+    <Key>
+      <PropertyRef Name="AcCategoryID" />
+    </Key>
+    <Property Name="AcCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcCategory" Type="nvarchar" MaxLength="100" />
+    <Property Name="CategoryOrder" Type="int" />
+  </EntityType>
+  <EntityType Name="AcCompany">
+    <Key>
+      <PropertyRef Name="AcCompanyID" />
+    </Key>
+    <Property Name="AcCompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcCompany" Type="varchar" MaxLength="125" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="Address1" Type="varchar" MaxLength="50" />
+    <Property Name="Address2" Type="varchar" MaxLength="50" />
+    <Property Name="Address3" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="EMail" Type="varchar" MaxLength="50" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="KeyPerson" Type="varchar" MaxLength="100" />
+    <Property Name="DesignationID" Type="int" />
+    <Property Name="PhoneNo1" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo2" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo3" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo4" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNo1" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNo2" Type="varchar" MaxLength="50" />
+    <Property Name="Website" Type="varchar" MaxLength="100" />
+    <Property Name="CompanyPrefix" Type="varchar" MaxLength="10" />
+    <Property Name="CurrencyID" Type="int" />
+    <Property Name="AreaID" Type="int" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="100" />
+    <Property Name="logo" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="AcFinancialYear">
+    <Key>
+      <PropertyRef Name="AcFinancialYearID" />
+    </Key>
+    <Property Name="AcFinancialYearID" Type="int" Nullable="false" />
+    <Property Name="AcCompanyID" Type="int" />
+    <Property Name="AcFYearFrom" Type="datetime" />
+    <Property Name="AcFYearTo" Type="datetime" />
+    <Property Name="ReferenceName" Type="nvarchar" MaxLength="10" />
+    <Property Name="StatusClose" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="Lock" Type="bit" />
+  </EntityType>
+  <EntityType Name="AcGroup">
+    <Key>
+      <PropertyRef Name="AcGroupID" />
+    </Key>
+    <Property Name="AcGroupID" Type="int" Nullable="false" />
+    <Property Name="AcBranchID" Type="int" />
+    <Property Name="AcGroup" Type="nvarchar" MaxLength="50" />
+    <Property Name="AcType" Type="nvarchar" MaxLength="2" />
+    <Property Name="AcClass" Type="nvarchar" MaxLength="2" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="GroupOrder" Type="int" />
+    <Property Name="StaticEdit" Type="smallint" />
+    <Property Name="StatusHide" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="AcCategoryID" Type="int" />
+    <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AcTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="AcHead">
+    <Key>
+      <PropertyRef Name="AcHeadID" />
+    </Key>
+    <Property Name="AcHeadID" Type="int" Nullable="false" />
+    <Property Name="AcHeadKey" Type="nvarchar" MaxLength="10" />
+    <Property Name="AcHead" Type="nvarchar" MaxLength="50" />
+    <Property Name="AcGroupID" Type="int" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="HeadOrder" Type="int" />
+    <Property Name="StatusHide" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Prefix" Type="nchar" MaxLength="10" />
+    <Property Name="StatusControlAc" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'malusoft_accounts.dbo.AcHeadAssign' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AcHeadAssign">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProvisionCostControlAcID" Type="int" />
+    <Property Name="AccruedCostControlAcID" Type="int" />
+    <Property Name="OpenJobRevenueAcID" Type="int" />
+    <Property Name="CustomerControlAcID" Type="int" />
+    <Property Name="CashControlAcID" Type="int" />
+    <Property Name="SupplierControlAcID" Type="int" />
+  </EntityType>
+  <EntityType Name="AcHeadControl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pagecontrol" Type="int" />
+    <Property Name="AccountControlHead" Type="int" />
+    <Property Name="AccountName" Type="nvarchar(max)" />
+    <Property Name="AccountHeadID" Type="int" />
+    <Property Name="AccountNature" Type="bit" />
+    <Property Name="Remarks" Type="int" />
+    <Property Name="CheckSum" Type="bit" />
+  </EntityType>
+  <EntityType Name="AcJournalDetail">
+    <Key>
+      <PropertyRef Name="AcJournalDetailID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcJournalDetailID" Type="int" Nullable="false" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="AcHeadID" Type="int" />
+    <Property Name="AnalysisHeadID" Type="int" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="PartyID" Type="int" />
+    <Property Name="PartyType" Type="nchar" MaxLength="1" />
+    <Property Name="FAmount" Type="money" />
+    <Property Name="ExRate" Type="money" />
+    <Property Name="Lock" Type="bit" />
+  </EntityType>
+  <EntityType Name="AcJournalMaster">
+    <Key>
+      <PropertyRef Name="AcJournalID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcJournalID" Type="int" Nullable="false" />
+    <Property Name="VoucherNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="TransDate" Type="datetime" />
+    <Property Name="AcFinancialYearID" Type="int" />
+    <Property Name="VoucherType" Type="nvarchar" MaxLength="3" />
+    <Property Name="TransType" Type="smallint" />
+    <Property Name="StatusDelete" Type="bit" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="ShiftID" Type="int" />
+    <Property Name="AcCompanyID" Type="int" />
+    <Property Name="Reference" Type="nvarchar" MaxLength="100" />
+    <Property Name="PaymentType" Type="int" />
+    <Property Name="Lock" Type="bit" />
+    <Property Name="TransactionNo" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="AcMemoBankDetails">
+    <Key>
+      <PropertyRef Name="AcMemoBankDetailID" />
+    </Key>
+    <Property Name="AcMemoBankDetailID" Type="int" Nullable="false" />
+    <Property Name="AcMemoJournalID" Type="int" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChequeDate" Type="datetime" />
+    <Property Name="PartyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusTrans" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="AcMemoJournalDetail">
+    <Key>
+      <PropertyRef Name="AcMemoJournalDetailID" />
+    </Key>
+    <Property Name="AcMemoJournalDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcMemoJournalID" Type="int" />
+    <Property Name="AcHeadID" Type="int" />
+    <Property Name="AnalysisHeadID" Type="int" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="PartyID" Type="int" />
+    <Property Name="PartyType" Type="nchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="AcMemoJournalMaster">
+    <Key>
+      <PropertyRef Name="AcMemoJournalID" />
+    </Key>
+    <Property Name="AcMemoJournalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="VoucherNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="TransDate" Type="datetime" />
+    <Property Name="AcFinancialYearID" Type="int" />
+    <Property Name="VoucherType" Type="nvarchar" MaxLength="2" />
+    <Property Name="StatusDelete" Type="bit" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="AcCompanyID" Type="int" />
+  </EntityType>
+  <EntityType Name="AcOpeningMaster">
+    <Key>
+      <PropertyRef Name="AcOpeningID" />
+    </Key>
+    <Property Name="AcOpeningID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AcFinancialYearID" Type="int" />
+    <Property Name="OPDate" Type="datetime" />
+    <Property Name="AcHeadID" Type="int" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="PartyID" Type="int" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="StatusImport" Type="bit" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="AssetMasterID" Type="int" />
+    <Property Name="AcCompanyID" Type="int" />
+    <Property Name="InvRemarks" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="AcOPInvoiceDetails">
+    <Key>
+      <PropertyRef Name="AcOPInvoiceDetailID" />
+    </Key>
+    <Property Name="AcOPInvoiceDetailID" Type="int" Nullable="false" />
+    <Property Name="AcOPInvoiceMasterID" Type="int" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="LastTransDate" Type="datetime" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="StatusClose" Type="bit" />
+    <Property Name="AcmemoJournalId" Type="int" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="AcheadID" Type="int" />
+    <Property Name="JobCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AcOPInvoiceMaster">
+    <Key>
+      <PropertyRef Name="AcOPInvoiceMasterID" />
+    </Key>
+    <Property Name="AcOPInvoiceMasterID" Type="int" Nullable="false" />
+    <Property Name="AcHeadID" Type="int" />
+    <Property Name="AcFinancialYearID" Type="int" />
+    <Property Name="OPDate" Type="datetime" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="100" />
+    <Property Name="StatusSDSC" Type="nvarchar" MaxLength="2" />
+    <Property Name="PartyID" Type="int" />
+  </EntityType>
+  <EntityType Name="AcType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountType" Type="nvarchar" MaxLength="100" />
+    <Property Name="AcCategoryId" Type="int" />
+    <Property Name="BranchId" Type="int" />
+  </EntityType>
+  <EntityType Name="Airline">
+    <Key>
+      <PropertyRef Name="AirlineID" />
+    </Key>
+    <Property Name="AirlineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Airline" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="AnalysisGroup">
+    <Key>
+      <PropertyRef Name="AnalysisGroupID" />
+    </Key>
+    <Property Name="AnalysisGroupID" Type="int" Nullable="false" />
+    <Property Name="AnalysisGroup" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AnalysisHead">
+    <Key>
+      <PropertyRef Name="AnalysisHeadID" />
+    </Key>
+    <Property Name="AnalysisHeadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnalysisCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AnalysisHead" Type="nvarchar" MaxLength="50" />
+    <Property Name="AnalysisGroupID" Type="int" />
+    <Property Name="BranchID" Type="int" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BranchMaster">
+    <Key>
+      <PropertyRef Name="BranchID" />
+    </Key>
+    <Property Name="BranchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BranchName" Type="varchar" MaxLength="125" />
+    <Property Name="Address1" Type="varchar" MaxLength="50" />
+    <Property Name="Address2" Type="varchar" MaxLength="50" />
+    <Property Name="Address3" Type="varchar" MaxLength="50" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="KeyPerson" Type="varchar" MaxLength="100" />
+    <Property Name="DesignationID" Type="int" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo1" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo2" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo3" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNo4" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNo1" Type="varchar" MaxLength="50" />
+    <Property Name="MobileNo2" Type="varchar" MaxLength="50" />
+    <Property Name="EMail" Type="varchar" MaxLength="50" />
+    <Property Name="Website" Type="varchar" MaxLength="100" />
+    <Property Name="BranchPrefix" Type="varchar" MaxLength="10" />
+    <Property Name="CurrencyID" Type="int" />
+    <Property Name="AcCompanyID" Type="int" />
+    <Property Name="StatusAssociate" Type="bit" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Carrier">
+    <Key>
+      <PropertyRef Name="CarrierID" />
+    </Key>
+    <Property Name="CarrierID" Type="int" Nullable="false" />
+    <Property Name="Carrier" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Commodity">
+    <Key>
+      <PropertyRef Name="CommodityID" />
+    </Key>
+    <Property Name="CommodityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Commodity" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ContainerType">
+    <Key>
+      <PropertyRef Name="ContainerTypeID" />
+    </Key>
+    <Property Name="ContainerTypeID" Type="int" Nullable="false" />
+    <Property Name="ContainerType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CostUpdation">
+    <Key>
+      <PropertyRef Name="CostUpdationID" />
+    </Key>
+    <Property Name="CostUpdationID" Type="int" Nullable="false" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="DocumentNo" Type="varchar" MaxLength="20" />
+    <Property Name="PrevCostupID" Type="int" />
+    <Property Name="SupplierPaymentStatus" Type="char" MaxLength="2" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Lock" Type="bit" />
+    <Property Name="TransactionDate" Type="datetime" />
+    <Property Name="InvoiceAmount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="CostUpdationDetails">
+    <Key>
+      <PropertyRef Name="CostUpdationDetailID" />
+    </Key>
+    <Property Name="CostUpdationDetailID" Type="int" Nullable="false" />
+    <Property Name="CostUpdationID" Type="int" />
+    <Property Name="RevenueTypeID" Type="int" />
+    <Property Name="ProvisionCurrencyID" Type="int" />
+    <Property Name="ProvisionExchangeRate" Type="money" />
+    <Property Name="ProvisionForeign" Type="money" />
+    <Property Name="ProvisionHome" Type="money" />
+    <Property Name="SalesCurrencyID" Type="int" />
+    <Property Name="SalesExchangeRate" Type="money" />
+    <Property Name="SalesForeign" Type="money" />
+    <Property Name="SalesHome" Type="money" />
+    <Property Name="Variance" Type="money" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="JInvoiceID" Type="int" />
+    <Property Name="Cost" Type="money" />
+    <Property Name="PrevCostDetailID" Type="int" />
+    <Property Name="AmountPaidTillDate" Type="money" />
+    <Property Name="PaidOrNot" Type="char" MaxLength="2" />
+    <Property Name="SupplierReference" Type="nvarchar" MaxLength="50" />
+    <Property Name="SupplierPayStatus" Type="char" MaxLength="2" />
+    <Property Name="Lock" Type="bit" />
+  </EntityType>
+  <EntityType Name="CountryMaster">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="int" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryPrefix" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CreditNote">
+    <Key>
+      <PropertyRef Name="CreditNoteID" />
+    </Key>
+    <Property Name="CreditNoteID" Type="int" Nullable="false" />
+    <Property Name="CreditNoteNo" Type="int" />
+    <Property Name="InvoiceID" Type="int" />
+    <Property Name="CreditNoteDate" Type="datetime" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="FYearID" Type="int" />
+    <Property Name="AcCompanyID" Type="int" />
+    <Property Name="InvoiceType" Type="nvarchar" MaxLength="5" />
+    <Property Name="RecPayID" Type="int" />
+    <Property Name="AcHeadID" Type="int" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="statusclose" Type="bit" />
+    <Property Name="IsShipping" Type="bit" />
+  </EntityType>
+  <EntityType Name="CurrencyMaster">
+    <Key>
+      <PropertyRef Name="CurrencyID" />
+    </Key>
+    <Property Name="CurrencyID" Type="int" Nullable="false" />
+    <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Symbol" Type="nvarchar" MaxLength="10" />
+    <Property Name="NoOfDecimals" Type="smallint" />
+    <Property Name="MonetaryUnit" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="StatusBaseCurrency" Type="bit" />
+    <Property Name="ExchangeRate" Type="money" />
+    <Property Name="CurrencyCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="Customer" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReferenceCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="WebSite" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxCreditDays" Type="int" />
+    <Property Name="MaxCreditLimit" Type="float" />
+    <Property Name="DiscountPercentage" Type="real" />
+    <Property Name="StatusActive" Type="bit" />
+    <Property Name="StatusBlocked" Type="bit" />
+    <Property Name="StatusConsignor" Type="bit" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="200" />
+    <Property Name="StatusReserved" Type="bit" />
+    <Property Name="ExporterCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="POBoxNo" Type="nvarchar" MaxLength="25" />
+    <Property Name="InvoiceTo" Type="bit" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerType" Type="int" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="WhatsAppNumber" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CustomerNotification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffId" Type="int" />
+    <Property Name="Datetime" Type="datetime" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="JobId" Type="int" />
+    <Property Name="IsEmail" Type="bit" />
+    <Property Name="IsSms" Type="bit" />
+    <Property Name="IsWhatsapp" Type="bit" />
+    <Property Name="PageTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="DebitNote">
+    <Key>
+      <PropertyRef Name="DebitNoteID" />
+    </Key>
+    <Property Name="DebitNoteID" Type="int" Nullable="false" />
+    <Property Name="DebitNoteNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="InvoiceID" Type="int" />
+    <Property Name="DebitNoteDate" Type="datetime" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="FYearID" Type="int" />
+    <Property Name="AcCompanyID" Type="int" />
+    <Property Name="InvoiceType" Type="nvarchar" MaxLength="5" />
+    <Property Name="RecPayID" Type="int" />
+    <Property Name="AcHeadID" Type="int" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="IsShipping" Type="bit" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Designation">
+    <Key>
+      <PropertyRef Name="DesignationID" />
+    </Key>
+    <Property Name="DesignationID" Type="int" Nullable="false" />
+    <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+    <Property Name="User1" Type="int" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="EmployeeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address3" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="DesignationID" Type="int" />
+    <Property Name="DepartmentID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="50" />
+    <Property Name="DOJ" Type="datetime" />
+    <Property Name="StatusActive" Type="bit" />
+    <Property Name="DOL" Type="datetime" />
+    <Property Name="Basic" Type="money" />
+    <Property Name="Housing" Type="money" />
+    <Property Name="TA" Type="money" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ItemUnit">
+    <Key>
+      <PropertyRef Name="ItemUnitID" />
+    </Key>
+    <Property Name="ItemUnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemUnit" Type="nvarchar" MaxLength="50" />
+    <Property Name="EqualentQty" Type="int" />
+    <Property Name="StatusActive" Type="bit" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="JAuditLog">
+    <Key>
+      <PropertyRef Name="JAuditLogID" />
+    </Key>
+    <Property Name="JAuditLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransDate" Type="datetime" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+    <Property Name="LoginID" Type="int" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="JBIllOfEntry">
+    <Key>
+      <PropertyRef Name="BIllOfEntryID" />
+    </Key>
+    <Property Name="BIllOfEntryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BIllOfEntry" Type="nvarchar" MaxLength="50" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="BillofEntryDate" Type="datetime" />
+    <Property Name="ShippingAgentID" Type="int" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="JCargoDescription">
+    <Key>
+      <PropertyRef Name="CargoDescriptionID" />
+    </Key>
+    <Property Name="CargoDescriptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="Mark" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="weight" Type="money" />
+    <Property Name="volume" Type="money" />
+    <Property Name="Packages" Type="money" />
+    <Property Name="GrossWeight" Type="money" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="JContainerDetails">
+    <Key>
+      <PropertyRef Name="JContainerDetailID" />
+    </Key>
+    <Property Name="JContainerDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="ContainerTypeID" Type="int" />
+    <Property Name="ContainerNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="SealNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="JInvoice">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="RevenueTypeID" Type="int" />
+    <Property Name="ProvisionCurrencyID" Type="int" />
+    <Property Name="ProvisionExchangeRate" Type="money" />
+    <Property Name="ProvisionForeign" Type="money" />
+    <Property Name="ProvisionHome" Type="money" />
+    <Property Name="SalesCurrencyID" Type="int" />
+    <Property Name="SalesExchangeRate" Type="money" />
+    <Property Name="SalesForeign" Type="money" />
+    <Property Name="SalesHome" Type="money" />
+    <Property Name="Cost" Type="money" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="RevenueCode" Type="nvarchar" MaxLength="200" />
+    <Property Name="tempInvID" Type="int" />
+    <Property Name="PreInvID" Type="int" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="UnitID" Type="int" />
+    <Property Name="ProvisionRate" Type="money" />
+    <Property Name="SalesRate" Type="money" />
+    <Property Name="AmtInWords" Type="nvarchar" MaxLength="750" />
+    <Property Name="ProvisionQty" Type="int" />
+    <Property Name="SalesQty" Type="int" />
+    <Property Name="InvoiceStatus" Type="char" MaxLength="2" />
+    <Property Name="CostUpdationStatus" Type="char" MaxLength="2" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Description" Type="nchar" MaxLength="200" />
+    <Property Name="Lock" Type="bit" />
+    <Property Name="Tax" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="TaxAmount" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="Margin" Type="decimal" Precision="15" Scale="2" />
+  </EntityType>
+  <EntityType Name="JobGeneration">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="JobCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="JobTypeID" Type="int" />
+    <Property Name="JobDate" Type="datetime" />
+    <Property Name="ConsignerID" Type="int" />
+    <Property Name="ConsigneeID" Type="int" />
+    <Property Name="InvoiceToID" Type="int" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="ShipperID" Type="int" />
+    <Property Name="IPTNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="RefNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="BillOfEnquiry" Type="nvarchar" MaxLength="50" />
+    <Property Name="BLDate" Type="datetime" />
+    <Property Name="DeliveryOrderNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeliveryOrderDate" Type="datetime" />
+    <Property Name="BLStatus1" Type="nvarchar" MaxLength="50" />
+    <Property Name="CLFValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="DepositAmount" Type="money" />
+    <Property Name="DepositDate" Type="datetime" />
+    <Property Name="ReceiptNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="RefundDate" Type="datetime" />
+    <Property Name="RefundAmount" Type="money" />
+    <Property Name="VesselID" Type="int" />
+    <Property Name="VoyageNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Freight" Type="nvarchar" MaxLength="50" />
+    <Property Name="SailingDate" Type="datetime" />
+    <Property Name="ArrivalDate" Type="datetime" />
+    <Property Name="MBL" Type="nvarchar" MaxLength="50" />
+    <Property Name="HBL" Type="nvarchar" MaxLength="50" />
+    <Property Name="BLStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="StausInvoiceType" Type="nvarchar" MaxLength="2" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="AcProvisionCostJournalID" Type="int" />
+    <Property Name="LoadPortID" Type="int" />
+    <Property Name="DestinationPortID" Type="int" />
+    <Property Name="DeliveryPlaceID" Type="int" />
+    <Property Name="ReceiptPlaceID" Type="int" />
+    <Property Name="AirlineID" Type="int" />
+    <Property Name="Flight" Type="nvarchar" MaxLength="50" />
+    <Property Name="MAWB" Type="nvarchar" MaxLength="50" />
+    <Property Name="HAWB" Type="nvarchar" MaxLength="50" />
+    <Property Name="GrossWeight" Type="money" />
+    <Property Name="Volume" Type="money" />
+    <Property Name="Package" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryofOriginID" Type="int" />
+    <Property Name="StatusSub" Type="bit" />
+    <Property Name="MainJobID" Type="int" />
+    <Property Name="InvoiceNo" Type="int" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="TransporterID" Type="int" />
+    <Property Name="CollectionDate" Type="datetime" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="DeliveryInstructions" Type="nvarchar" MaxLength="200" />
+    <Property Name="TruckRegNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="DriverDetails" Type="nvarchar" MaxLength="200" />
+    <Property Name="TDN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarks" Type="ntext" />
+    <Property Name="MRN" Type="nvarchar" MaxLength="50" />
+    <Property Name="RotationNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="CarrierID" Type="int" />
+    <Property Name="QuotationID" Type="int" />
+    <Property Name="CollectionPoint" Type="varchar" MaxLength="100" />
+    <Property Name="DeliveryNote" Type="varchar" MaxLength="100" />
+    <Property Name="DeliveryPoint" Type="varchar" MaxLength="100" />
+    <Property Name="CollectionInstructions" Type="varchar" MaxLength="100" />
+    <Property Name="IsClosed" Type="bit" />
+    <Property Name="CustRef" Type="nvarchar" MaxLength="100" />
+    <Property Name="JobCloseAcJournalID" Type="int" />
+    <Property Name="StatusClose" Type="bit" />
+    <Property Name="PreJobID" Type="int" />
+    <Property Name="PreFYearID" Type="int" />
+    <Property Name="statusPreInvoice" Type="bit" />
+    <Property Name="shippingInstruction" Type="nvarchar" MaxLength="1000" />
+    <Property Name="RecPayStatus" Type="bit" />
+    <Property Name="JobStatus" Type="bit" />
+    <Property Name="CostUpdatedOrNot" Type="char" MaxLength="5" />
+    <Property Name="DepartingDate" Type="datetime" />
+    <Property Name="Lock" Type="bit" />
+    <Property Name="JobStatusId" Type="int" />
+  </EntityType>
+  <EntityType Name="JobMode">
+    <Key>
+      <PropertyRef Name="JobModeID" />
+    </Key>
+    <Property Name="JobModeID" Type="int" Nullable="false" />
+    <Property Name="JobMode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="JobStatus">
+    <Key>
+      <PropertyRef Name="JobStatusId" />
+    </Key>
+    <Property Name="JobStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="JobType">
+    <Key>
+      <PropertyRef Name="JobTypeID" />
+    </Key>
+    <Property Name="JobTypeID" Type="int" Nullable="false" />
+    <Property Name="JobDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="JobModeID" Type="int" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="100" />
+    <Property Name="JobCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="JobPrefix" Type="nvarchar" MaxLength="5" />
+    <Property Name="StatusSea" Type="bit" />
+    <Property Name="ShowDisplay" Type="bit" />
+  </EntityType>
+  <EntityType Name="JStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" />
+    <Property Name="JobStatusId" Type="int" />
+    <Property Name="EmployeeId" Type="int" />
+    <Property Name="DateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="int" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+    <Property Name="prefix" Type="nvarchar" MaxLength="5" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="MenuID" />
+    </Key>
+    <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="256" />
+    <Property Name="Link" Type="text" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="Ordering" Type="int" />
+    <Property Name="SubLevel" Type="int" />
+    <Property Name="RoleID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="imgclass" Type="nvarchar" MaxLength="40" />
+    <Property Name="PermissionRequired" Type="bit" />
+    <Property Name="MenuOrder" Type="int" />
+    <Property Name="IsAccountMenu" Type="bit" />
+  </EntityType>
+  <EntityType Name="MenuAccessLevel">
+    <Key>
+      <PropertyRef Name="MenuAccessID" />
+    </Key>
+    <Property Name="MenuAccessID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuID" Type="int" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="IsView" Type="bit" />
+    <Property Name="IsAdd" Type="bit" />
+    <Property Name="IsModify" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Isprint" Type="bit" />
+  </EntityType>
+  <EntityType Name="PageControlField">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PageControlId" Type="int" />
+    <Property Name="FieldName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PageControlMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ControlName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PaymentTerms">
+    <Key>
+      <PropertyRef Name="PaymentTermID" />
+    </Key>
+    <Property Name="PaymentTermID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentTerm" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Port">
+    <Key>
+      <PropertyRef Name="PortID" />
+    </Key>
+    <Property Name="PortID" Type="int" Nullable="false" />
+    <Property Name="PortCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Port" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryID" Type="int" />
+  </EntityType>
+  <EntityType Name="ProductServices">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ProductCode" Type="varchar" MaxLength="255" />
+    <Property Name="HSNCode" Type="varchar" MaxLength="255" />
+    <Property Name="EndUser" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Reseller" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SpecialPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Status" Type="int" />
+    <Property Name="TaxPercent" Type="int" />
+  </EntityType>
+  <EntityType Name="PurchaseInvoice">
+    <Key>
+      <PropertyRef Name="PurchaseInvoiceID" />
+    </Key>
+    <Property Name="PurchaseInvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PurchaseInvoiceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PurchaseInvoiceDate" Type="datetime" />
+    <Property Name="Reference" Type="nvarchar" MaxLength="100" />
+    <Property Name="LPOReference" Type="nvarchar" MaxLength="100" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="QuotationNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="CurrencyID" Type="int" />
+    <Property Name="ExchangeRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreditDays" Type="int" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="StatusDiscountAmt" Type="bit" />
+    <Property Name="OtherCharges" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PaymentTerm" Type="nvarchar(max)" />
+    <Property Name="Remarks" Type="nvarchar(max)" />
+    <Property Name="FYearID" Type="int" />
+    <Property Name="DiscountType" Type="int" />
+    <Property Name="DiscountValueLC" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DiscountValueFC" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsShipping" Type="bit" />
+  </EntityType>
+  <EntityType Name="PurchaseInvoiceDetails">
+    <Key>
+      <PropertyRef Name="PurchaseInvoiceDetailID" />
+    </Key>
+    <Property Name="PurchaseInvoiceDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PurchaseInvoiceID" Type="int" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="ItemUnitID" Type="int" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RateFC" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Value" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ValueFC" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Taxprec" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="Tax" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NetValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AcHeadID" Type="int" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="RecPayStatus" Type="int" />
+    <Property Name="RecPayDetailId" Type="int" />
+  </EntityType>
+  <EntityType Name="RecPay">
+    <Key>
+      <PropertyRef Name="RecPayID" />
+    </Key>
+    <Property Name="RecPayID" Type="int" Nullable="false" />
+    <Property Name="RecPayDate" Type="datetime" />
+    <Property Name="DocumentNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="BusinessCentreID" Type="int" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ChequeNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChequeDate" Type="datetime" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="125" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="StatusRec" Type="bit" />
+    <Property Name="StatusEntry" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusOrigin" Type="nvarchar" MaxLength="50" />
+    <Property Name="FYearID" Type="int" />
+    <Property Name="AcCompanyID" Type="int" />
+    <Property Name="EXRate" Type="money" />
+    <Property Name="FMoney" Type="money" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="IsTradingReceipt" Type="bit" />
+  </EntityType>
+  <EntityType Name="RecPayDetails">
+    <Key>
+      <PropertyRef Name="RecPayDetailID" />
+    </Key>
+    <Property Name="RecPayDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RecPayID" Type="int" />
+    <Property Name="InvoiceID" Type="int" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="120" />
+    <Property Name="StatusInvoice" Type="nvarchar" MaxLength="1" />
+    <Property Name="StatusAdvance" Type="bit" />
+    <Property Name="statusReceipt" Type="char" MaxLength="1" />
+    <Property Name="InvDate" Type="nvarchar" MaxLength="100" />
+    <Property Name="InvNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="CurrencyID" Type="int" />
+    <Property Name="Lock" Type="bit" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="AdjustmentAmount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Remarks">
+    <Key>
+      <PropertyRef Name="RemarksID" />
+    </Key>
+    <Property Name="RemarksID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="RevenueType">
+    <Key>
+      <PropertyRef Name="RevenueTypeID" />
+    </Key>
+    <Property Name="RevenueTypeID" Type="int" Nullable="false" />
+    <Property Name="RevenueType" Type="nvarchar" MaxLength="50" />
+    <Property Name="AcHeadID" Type="int" />
+    <Property Name="RevenueCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="RevenueCost" Type="money" />
+    <Property Name="MinimumValue" Type="money" />
+    <Property Name="TaxPercentage" Type="decimal" Precision="5" Scale="2" />
+  </EntityType>
+  <EntityType Name="RoleMaster">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesInvoice">
+    <Key>
+      <PropertyRef Name="SalesInvoiceID" />
+    </Key>
+    <Property Name="SalesInvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalesInvoiceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="SalesInvoiceDate" Type="datetime" />
+    <Property Name="QuotationNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="Reference" Type="nvarchar" MaxLength="100" />
+    <Property Name="LPOReference" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="CurrencyID" Type="int" />
+    <Property Name="ExchangeRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreditDays" Type="int" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="AcJournalID" Type="int" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="StatusDiscountAmt" Type="bit" />
+    <Property Name="OtherCharges" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PaymentTerm" Type="nvarchar(max)" />
+    <Property Name="Remarks" Type="nvarchar(max)" />
+    <Property Name="FYearID" Type="int" />
+    <Property Name="DeliveryId" Type="int" />
+    <Property Name="DiscountType" Type="int" />
+    <Property Name="DiscountValueLC" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DiscountValueFC" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsShipping" Type="bit" />
+  </EntityType>
+  <EntityType Name="SalesInvoiceDetails">
+    <Key>
+      <PropertyRef Name="SalesInvoiceDetailID" />
+    </Key>
+    <Property Name="SalesInvoiceDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalesInvoiceID" Type="int" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="ItemUnitID" Type="int" />
+    <Property Name="RateType" Type="nvarchar" MaxLength="50" />
+    <Property Name="RateLC" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RateFC" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Value" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ValueLC" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ValueFC" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Tax" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NetValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="JobID" Type="int" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="RecPayStatus" Type="int" />
+    <Property Name="RecPayDetailId" Type="int" />
+  </EntityType>
+  <EntityType Name="ShippingAgent">
+    <Key>
+      <PropertyRef Name="ShippingAgentID" />
+    </Key>
+    <Property Name="ShippingAgentID" Type="int" Nullable="false" />
+    <Property Name="AgentName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReferenceCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="WebSite" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusActive" Type="bit" />
+    <Property Name="StatusBlocked" Type="bit" />
+    <Property Name="StatusReserved" Type="bit" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="200" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="5" />
+    <Property Name="ExportCode" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreditLimit" Type="int" />
+    <Property Name="CreditDays" Type="int" />
+  </EntityType>
+  <EntityType Name="StaffNote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" />
+    <Property Name="EmployeeId" Type="int" />
+    <Property Name="Datetime" Type="datetime" />
+    <Property Name="TaskDetails" Type="nvarchar(max)" />
+    <Property Name="PageTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="int" Nullable="false" />
+    <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReferenceCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="WebSite" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxCreditDays" Type="int" />
+    <Property Name="MaxCreditLimit" Type="float" />
+    <Property Name="StatusActive" Type="bit" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="200" />
+    <Property Name="StatusReserved" Type="bit" />
+    <Property Name="POBoxNo" Type="nvarchar" MaxLength="25" />
+    <Property Name="statusInventory" Type="bit" />
+    <Property Name="RevenuTypeIds" Type="nvarchar(max)" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" />
+    <Property Name="ExportCode" Type="int" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="CurrencyID" Type="int" />
+    <Property Name="AcCompanyID" Type="int" />
+    <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="SupplierTypeID" Type="int" />
+    <Property Name="SupplierType" Type="int" />
+  </EntityType>
+  <EntityType Name="SupplierTypeMaster">
+    <Key>
+      <PropertyRef Name="SupplierTypeID" />
+    </Key>
+    <Property Name="SupplierTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupplierCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="SupplierType" Type="nvarchar" MaxLength="100" />
+    <Property Name="BranchId" Type="int" />
+  </EntityType>
+  <EntityType Name="Transporter">
+    <Key>
+      <PropertyRef Name="TransPorterID" />
+    </Key>
+    <Property Name="TransPorterID" Type="int" Nullable="false" />
+    <Property Name="TransPorter" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReferenceCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address3" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="WebSite" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxCreditDays" Type="int" />
+    <Property Name="MaxCreditLimit" Type="float" />
+    <Property Name="DiscountPercentage" Type="real" />
+    <Property Name="StatusActive" Type="bit" />
+    <Property Name="StatusBlocked" Type="bit" />
+    <Property Name="StatusConsignor" Type="bit" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="200" />
+    <Property Name="StatusReserved" Type="bit" />
+    <Property Name="ExporterCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="56" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRegistration">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="AcFinancialYearID" Type="int" />
+    <Property Name="BranchID" Type="int" />
+  </EntityType>
+  <EntityType Name="Validity">
+    <Key>
+      <PropertyRef Name="ValidityID" />
+    </Key>
+    <Property Name="ValidityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Validity" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Vessel">
+    <Key>
+      <PropertyRef Name="VesselID" />
+    </Key>
+    <Property Name="VesselID" Type="int" Nullable="false" />
+    <Property Name="Vessel" Type="nvarchar" MaxLength="50" />
+    <Property Name="CarrierID" Type="int" />
+  </EntityType>
+  <EntityType Name="Voyage">
+    <Key>
+      <PropertyRef Name="VoyageID" />
+    </Key>
+    <Property Name="VoyageID" Type="int" Nullable="false" />
+    <Property Name="Voyage" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'malusoft_accounts.dbo.qryCustomerStatement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="qryCustomerStatement">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+      <PropertyRef Name="AmtToBeReceived" />
+      <PropertyRef Name="AmtAlreadyReceived" />
+    </Key>
+    <Property Name="InvoiceID" Type="int" Nullable="false" />
+    <Property Name="InvoiceToID" Type="int" />
+    <Property Name="JobCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="InvoiceNo" Type="int" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="AmtToBeReceived" Type="money" Nullable="false" />
+    <Property Name="AmtAlreadyReceived" Type="money" Nullable="false" />
+    <Property Name="REMARKS" Type="nvarchar" MaxLength="125" />
+    <Property Name="EmployeeID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'malusoft_accounts.dbo.qrySupplierOutstanding' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="qrySupplierOutstanding">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+      <PropertyRef Name="AmtToBeReceived" />
+      <PropertyRef Name="AmtAlreadyReceived" />
+    </Key>
+    <Property Name="InvoiceID" Type="int" Nullable="false" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="InvoiceDate" Type="datetime" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="AmtToBeReceived" Type="money" Nullable="false" />
+    <Property Name="AmtAlreadyReceived" Type="money" Nullable="false" />
+    <Property Name="JobCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmployeeID" Type="int" />
+    <Property Name="JobID" Type="int" />
+  </EntityType>
+  <Association Name="FK_AcCompany_CountryMaster">
+    <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+    <End Role="AcCompany" Type="Self.AcCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryMaster">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="AcCompany">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AcCompany_CurrencyMaster">
+    <End Role="CurrencyMaster" Type="Self.CurrencyMaster" Multiplicity="0..1" />
+    <End Role="AcCompany" Type="Self.AcCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CurrencyMaster">
+        <PropertyRef Name="CurrencyID" />
+      </Principal>
+      <Dependent Role="AcCompany">
+        <PropertyRef Name="CurrencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AcCompany_Designation">
+    <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
+    <End Role="AcCompany" Type="Self.AcCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Designation">
+        <PropertyRef Name="DesignationID" />
+      </Principal>
+      <Dependent Role="AcCompany">
+        <PropertyRef Name="DesignationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AcCompany_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="AcCompany" Type="Self.AcCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="AcCompany">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AcGroup_AcCategory">
+    <End Role="AcCategory" Type="Self.AcCategory" Multiplicity="0..1" />
+    <End Role="AcGroup" Type="Self.AcGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AcCategory">
+        <PropertyRef Name="AcCategoryID" />
+      </Principal>
+      <Dependent Role="AcGroup">
+        <PropertyRef Name="AcCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AcOpeningMaster_AcCompany">
+    <End Role="AcCompany" Type="Self.AcCompany" Multiplicity="0..1" />
+    <End Role="AcOpeningMaster" Type="Self.AcOpeningMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AcCompany">
+        <PropertyRef Name="AcCompanyID" />
+      </Principal>
+      <Dependent Role="AcOpeningMaster">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AcOpeningMaster_AcFinancialYear">
+    <End Role="AcFinancialYear" Type="Self.AcFinancialYear" Multiplicity="0..1" />
+    <End Role="AcOpeningMaster" Type="Self.AcOpeningMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AcFinancialYear">
+        <PropertyRef Name="AcFinancialYearID" />
+      </Principal>
+      <Dependent Role="AcOpeningMaster">
+        <PropertyRef Name="AcFinancialYearID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AcOpeningMaster_AcHead">
+    <End Role="AcHead" Type="Self.AcHead" Multiplicity="0..1" />
+    <End Role="AcOpeningMaster" Type="Self.AcOpeningMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AcHead">
+        <PropertyRef Name="AcHeadID" />
+      </Principal>
+      <Dependent Role="AcOpeningMaster">
+        <PropertyRef Name="AcHeadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnalysisHead_AcCompany">
+    <End Role="AcCompany" Type="Self.AcCompany" Multiplicity="0..1" />
+    <End Role="AnalysisHead" Type="Self.AnalysisHead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AcCompany">
+        <PropertyRef Name="AcCompanyID" />
+      </Principal>
+      <Dependent Role="AnalysisHead">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnalysisHead_AnalysisGroup">
+    <End Role="AnalysisGroup" Type="Self.AnalysisGroup" Multiplicity="0..1" />
+    <End Role="AnalysisHead" Type="Self.AnalysisHead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnalysisGroup">
+        <PropertyRef Name="AnalysisGroupID" />
+      </Principal>
+      <Dependent Role="AnalysisHead">
+        <PropertyRef Name="AnalysisGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BranchMaster_CountryMaster">
+    <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+    <End Role="BranchMaster" Type="Self.BranchMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CountryMaster">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="BranchMaster">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BranchMaster_CurrencyMaster">
+    <End Role="CurrencyMaster" Type="Self.CurrencyMaster" Multiplicity="0..1" />
+    <End Role="BranchMaster" Type="Self.BranchMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CurrencyMaster">
+        <PropertyRef Name="CurrencyID" />
+      </Principal>
+      <Dependent Role="BranchMaster">
+        <PropertyRef Name="CurrencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BranchMaster_Designation">
+    <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
+    <End Role="BranchMaster" Type="Self.BranchMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Designation">
+        <PropertyRef Name="DesignationID" />
+      </Principal>
+      <Dependent Role="BranchMaster">
+        <PropertyRef Name="DesignationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BranchMaster_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="BranchMaster" Type="Self.BranchMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="BranchMaster">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AcAnalysisHeadAllocationDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcAnalysisHeadAllocationIDs" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AcAnalysisHeadAllocationInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcJournalDetailID" Type="int" Mode="In" />
+    <Parameter Name="AnalysisHeadID" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="AcBankDetailsByAcJournalID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcJournalID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcCategoryDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcCategoryIDs" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AcCategoryInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcCategory" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AcCategorySelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AcCategorySelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AcCategorySelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcCategoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcCategoryUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcCategoryID" Type="int" Mode="In" />
+    <Parameter Name="AcCategory" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AcCompanySelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AcFinancialYearSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcGroupDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcGroupIDs" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AcGroupSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcGroupSelectByCategoryID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcCategoryID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcGroupSelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcGroupID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcGroupUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcGroupID" Type="int" Mode="In" />
+    <Parameter Name="ParentID" Type="int" Mode="In" />
+    <Parameter Name="AcGroup" Type="nvarchar" Mode="In" />
+    <Parameter Name="AcCategoryID" Type="int" Mode="In" />
+    <Parameter Name="IsGroupcodeAuto" Type="smallint" Mode="In" />
+    <Parameter Name="GroupCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AcHeadAssignInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="provisionCostControlAcID" Type="int" Mode="In" />
+    <Parameter Name="AccruedCostControlAcID" Type="int" Mode="In" />
+    <Parameter Name="OpenJobRevenueAcID" Type="int" Mode="In" />
+    <Parameter Name="CustomerControlAcID" Type="int" Mode="In" />
+    <Parameter Name="CashControlAcID" Type="int" Mode="In" />
+    <Parameter Name="SupplierControlAcID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcHeadAssignSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AcHeadAssignUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProvisionCostControlAcID" Type="int" Mode="In" />
+    <Parameter Name="AccruedCostControlAcID" Type="int" Mode="In" />
+    <Parameter Name="OpenJobRevenueAcID" Type="int" Mode="In" />
+    <Parameter Name="CustomerControlAcID" Type="int" Mode="In" />
+    <Parameter Name="CashControlAcID" Type="int" Mode="In" />
+    <Parameter Name="SupplierControlAcID" Type="int" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcHeadDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcHeadIDs" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AcHeadInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+    <Parameter Name="AcHeadKey" Type="nvarchar" Mode="In" />
+    <Parameter Name="AcHead" Type="nvarchar" Mode="In" />
+    <Parameter Name="AcGroupID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Prefix" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="AcHeadSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcHeadSelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcHeadSelectForBank" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcHeadSelectForCash" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcHeadUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcHeadKey" Type="nvarchar" Mode="In" />
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+    <Parameter Name="AcHead" Type="nvarchar" Mode="In" />
+    <Parameter Name="AcGroupID" Type="int" Mode="In" />
+    <Parameter Name="Prefix" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="AcJournalDetailDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcJournalDetailIDs" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AcJournalDetailSelectByAcJournalID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcJournalID" Type="int" Mode="In" />
+    <Parameter Name="PaymentType" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="AcJournalDetailSelectByAcJournalIDJV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcJournalID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcJournalMasterDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcJournalIDs" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AcJournalMasterSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcJournalMasterSelectAllJV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcJournalMasterSelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcJournalID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcJournalMasterUpdateJV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcJournalID" Type="int" Mode="In" />
+    <Parameter Name="TransDate" Type="datetime" Mode="In" />
+    <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Reference" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AcMemoBankDetailsByAcJournalID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcMemoJournalID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcMemoJournalDetailSelectByAcJournalID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcMemoJournalID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcMemoJournalMasterDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcMemoJournalIDs" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AcMemoJournalMasterInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TransDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcFinancialYearID" Type="int" Mode="In" />
+    <Parameter Name="VoucherType" Type="nvarchar" Mode="In" />
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+    <Parameter Name="TransType" Type="smallint" Mode="In" />
+    <Parameter Name="Remark" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="money" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+    <Parameter Name="Reference" Type="nvarchar" Mode="In" />
+    <Parameter Name="AcJournalDetail" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="AcAnalysisHeadDetail" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BankName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ChequeNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="ChequeDate" Type="datetime" Mode="In" />
+    <Parameter Name="PartyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="StatusTrans" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AcMemoJournalMasterSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcMemoJournalMasterSelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcMemoJournalID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcOpeningMasterInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="OPDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="decimal" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AcOpeningMasterSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FyearID" Type="int" Mode="In" />
+    <Parameter Name="CompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AnalysisGroupDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AnalysisGroupIDs" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AnalysisGroupInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AnalysisGroupID" Type="int" Mode="In" />
+    <Parameter Name="AnalysisGroup" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AnalysisGroupSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AnalysisGroupSelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AnalysisGroupID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AnalysisGroupUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AnalysisGroupID" Type="int" Mode="In" />
+    <Parameter Name="AnalysisGroup" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AnalysisHeadDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AnalysisHeadIDs" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AnalysisHeadInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AnalysisCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="AnalysisHead" Type="nvarchar" Mode="In" />
+    <Parameter Name="AnalysisGroupID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AnalysisHeadSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AnalysisHeadSelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AnalysisHeadID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AnalysisHeadUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AnalysisHeadID" Type="int" Mode="In" />
+    <Parameter Name="AnalysisCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="AnalysisHead" Type="nvarchar" Mode="In" />
+    <Parameter Name="AnalysisGroupID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConvertJournaltoPDC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcMemoJournalIDs" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="CustOutstanding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustID" Type="int" Mode="In" />
+    <Parameter Name="fromdate" Type="datetime" Mode="In" />
+    <Parameter Name="todate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="CustStatement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAccountBalanceByHeadID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+    <Parameter Name="FyearID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetAcHeadByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetBankReconciliation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FyearID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetBankReconciliationOutStandings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+    <Parameter Name="FYearFrom" Type="datetime" Mode="In" />
+    <Parameter Name="FYearTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetChargesByJobIDForJobRegister" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetJobDetailsBySupplieRID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GETLOCALCostForDashboard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FinancialYearId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetOpeningBalanceForYE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcFyearID" Type="int" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPDCReminder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MaturedDate" Type="datetime" Mode="In" />
+    <Parameter Name="Flag" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPLOpeningAmount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcFinancialYearID" Type="int" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="JobAnalysisReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromdate" Type="datetime" Mode="In" />
+    <Parameter Name="todate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="JobRegisterReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromdate" Type="datetime" Mode="In" />
+    <Parameter Name="todate" Type="datetime" Mode="In" />
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proCollectionDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fromdate" Type="varchar" Mode="In" />
+    <Parameter Name="Todate" Type="varchar" Mode="In" />
+    <Parameter Name="customerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProCustomerAgingDatewise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DteFromDate" Type="varchar" Mode="In" />
+    <Parameter Name="DteToDate" Type="varchar" Mode="In" />
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProCustomerLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="intCustomerID" Type="int" Mode="In" />
+    <Parameter Name="DteFromDate" Type="varchar" Mode="In" />
+    <Parameter Name="DteToDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProCustomerStatement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="intCustomerID" Type="int" Mode="In" />
+    <Parameter Name="DteFromDate" Type="varchar" Mode="In" />
+    <Parameter Name="DteToDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proJobCostFull" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fromdate" Type="varchar" Mode="In" />
+    <Parameter Name="Todate" Type="varchar" Mode="In" />
+    <Parameter Name="FYearFrom" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proJobCostFullActualCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fromdate" Type="varchar" Mode="In" />
+    <Parameter Name="Todate" Type="varchar" Mode="In" />
+    <Parameter Name="FYearFrom" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProSupplierAging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DteFromDate" Type="varchar" Mode="In" />
+    <Parameter Name="DteToDate" Type="varchar" Mode="In" />
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProSupplierAgingDatewise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DteFromDate" Type="varchar" Mode="In" />
+    <Parameter Name="DteToDate" Type="varchar" Mode="In" />
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ProSupplierLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="intSupplierID" Type="int" Mode="In" />
+    <Parameter Name="DteFromDate" Type="varchar" Mode="In" />
+    <Parameter Name="DteToDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ProSupplierStatement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DteToDate" Type="varchar" Mode="In" />
+    <Parameter Name="intSupplierControlHeadID" Type="int" Mode="In" />
+    <Parameter Name="blnPDc" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Report_AnalysisHeadExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+    <Parameter Name="AnalysisHeadID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Report_BalanceSheet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="FyearID" Type="int" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Report_CashAndBankBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Report_CashBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Report_DayBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+    <Parameter Name="RentFlag" Type="int" Mode="In" />
+    <Parameter Name="MonthlyRent1" Type="decimal" Mode="In" />
+    <Parameter Name="MonthlyRent2" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="Report_JobRemark" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Report_Ledger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcHeadID" Type="int" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Report_ProfitAndLossAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+    <Parameter Name="FyearID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Report_TradingProfitAndLoss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="Report_TrialBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+    <Parameter Name="FyearID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ReportCustomerReceipt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecPayID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SalesAndCollectionRpt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+    <Parameter Name="YearFrom" Type="datetime" Mode="In" />
+    <Parameter Name="YearTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SaveFinancialYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcFyearID" Type="int" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+    <Parameter Name="NewAcFyearFrom" Type="datetime" Mode="In" />
+    <Parameter Name="NewFyearTo" Type="datetime" Mode="In" />
+    <Parameter Name="NewReferenceName" Type="varchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="NewFinancialYearID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectFinancialYearByBranch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteBillbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BIllOfEntryIDID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteContainerbyJobIDandUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JContainerDetailID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteCostUpdationDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CostUpdationID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteCustomerReciepts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecPayID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteJAuditLogbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JAuditLogID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteJCargoDescriptionbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CargoDescriptionID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteJInvoicebyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteJobByJobID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteJobDetailsByJobID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="InvoiceIds" Type="varchar" Mode="In" />
+    <Parameter Name="DeletedCargoIds" Type="varchar" Mode="In" />
+    <Parameter Name="DeletedContainerIds" Type="varchar" Mode="In" />
+    <Parameter Name="DeletedBillOfEntryIds" Type="varchar" Mode="In" />
+    <Parameter Name="DeletedAuditLogIDs" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_DeletePurchaseInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PurchaseInvoiceId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteSalesInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SalesInvoiceId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteSupplierPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecPayID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_EditUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UsserID" Type="int" Mode="In" />
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_GetAdvanceAmountOfCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetAllCarrier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllClosedJobsDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllContainerTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllCostUpdation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SP_GetAllCountries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllCustomers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllInvoiceChargesbySupplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+    <Parameter Name="JobID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_GetAllItemUnit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllJobsDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllJobsDetailsByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fdate" Type="datetime" Mode="In" />
+    <Parameter Name="tdate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SP_GetAllJobsDetailsForClosedJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllJobType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllPaymentsDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllPaymentsDetailsByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="Todate" Type="nvarchar" Mode="In" />
+    <Parameter Name="FyearId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetAllPorts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllProductServices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllRecieptsDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllRecieptsDetailsByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="Todate" Type="nvarchar" Mode="In" />
+    <Parameter Name="FyearId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetAllRevenueType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllSupplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllSupplierByJobCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_GetAllTransporters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAllVessels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetAuditbyJobIDandUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetBillsbyJobIDandUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetCargoDecbyJobIDandUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetChargesbyJobIDandUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetContainerDecbyJobIDandUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetCostUpdationByCostID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CostUpdationID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetCurrency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetCurrencyExchangeRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrencyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetCustomerByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetCustomerInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="JObId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetCustomerInvoiceDetailsForReciept" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetCustomerInvoiceReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="InvoiceNo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetCustomerLedgerReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetCustomerRecieptByRecPayID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecPayID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetDeliveryNoteReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetEDIFile_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="rotationNo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_GetExchageRateByCurrencyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CurrencyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetInvoiceNumberByJobID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetInvoiceReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetJInvoiceDetailsByInvoiceID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetJobArrivalReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetJobCodesForCostUpdation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetJOBCostReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="Todate" Type="datetime" Mode="In" />
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetJobGenerationByJobID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetJobTruckConsignmentNoteReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetJobTypePrefix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetMaxCostUpdationDocNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetMaxInvoiceNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetMaxJobID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetMaxPVID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetMaxRecPayID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetMaxRVID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetPurchaseInvoiceByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PurchaseInvoiceID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetSalesInvoiceByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SalesInvoiceID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetShippingAgents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_GetSupplierByRevenueTypeID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RevenuTypeId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetSupplierCostDetailsForPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetSupplierPaymentByRecPayID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecPayID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetUserDetailForEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_InsertAuditlog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JAuditLogID" Type="int" Mode="In" />
+    <Parameter Name="TransDate" Type="datetime" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertBillOfEntry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BIllOfEntryID" Type="int" Mode="In" />
+    <Parameter Name="BIllOfEntry" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="BillofEntryDate" Type="datetime" Mode="In" />
+    <Parameter Name="ShippingAgentID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertCargoDescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CargoDescriptionID" Type="int" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="Mark" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="weight" Type="money" Mode="In" />
+    <Parameter Name="volume" Type="money" Mode="In" />
+    <Parameter Name="Packages" Type="money" Mode="In" />
+    <Parameter Name="GrossWeight" Type="money" Mode="In" />
+    <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertCharges" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="RevenueTypeID" Type="int" Mode="In" />
+    <Parameter Name="ProvisionCurrencyID" Type="int" Mode="In" />
+    <Parameter Name="ProvisionExchangeRate" Type="money" Mode="In" />
+    <Parameter Name="ProvisionForeign" Type="money" Mode="In" />
+    <Parameter Name="ProvisionHome" Type="money" Mode="In" />
+    <Parameter Name="SalesCurrencyID" Type="int" Mode="In" />
+    <Parameter Name="SalesExchangeRate" Type="money" Mode="In" />
+    <Parameter Name="SalesForeign" Type="money" Mode="In" />
+    <Parameter Name="SalesHome" Type="money" Mode="In" />
+    <Parameter Name="Cost" Type="money" Mode="In" />
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+    <Parameter Name="RevenueCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Quantity" Type="float" Mode="In" />
+    <Parameter Name="UnitID" Type="int" Mode="In" />
+    <Parameter Name="ProvisionRate" Type="money" Mode="In" />
+    <Parameter Name="SalesRate" Type="money" Mode="In" />
+    <Parameter Name="AmtInWords" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceStatus" Type="char" Mode="In" />
+    <Parameter Name="CostUpdationStatus" Type="char" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Tax" Type="numeric" Mode="In" />
+    <Parameter Name="TaxAmount" Type="numeric" Mode="In" />
+    <Parameter Name="Margin" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertContainerDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JContainerDetailID" Type="int" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="ContainerTypeID" Type="int" Mode="In" />
+    <Parameter Name="ContainerNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="SealNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertCostUpdation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CostUpdationID" Type="int" Mode="In" />
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="Invoice" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcJournalID" Type="int" Mode="In" />
+    <Parameter Name="EmployeeID" Type="int" Mode="In" />
+    <Parameter Name="DocumentNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="PrevCostupID" Type="int" Mode="In" />
+    <Parameter Name="SupplierPaymentStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Lock" Type="bit" Mode="In" />
+    <Parameter Name="TransactionDate" Type="datetime" Mode="In" />
+    <Parameter Name="InvoiceAmount" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertCostUpdationAndDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="Invoice" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="EmployeeID" Type="int" Mode="In" />
+    <Parameter Name="DocumentNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="SupplierPaymentStatus" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="SupplierReference" Type="nvarchar" Mode="In" />
+    <Parameter Name="AmountPaidTillDate" Type="money" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertCostUpdationDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CostUpdationDetailID" Type="int" Mode="In" />
+    <Parameter Name="CostUpdationID" Type="int" Mode="In" />
+    <Parameter Name="RevenueTypeID" Type="int" Mode="In" />
+    <Parameter Name="ProvisionCurrencyID" Type="int" Mode="In" />
+    <Parameter Name="ProvisionExchangeRate" Type="money" Mode="In" />
+    <Parameter Name="ProvisionForeign" Type="money" Mode="In" />
+    <Parameter Name="ProvisionHome" Type="money" Mode="In" />
+    <Parameter Name="SalesCurrencyID" Type="int" Mode="In" />
+    <Parameter Name="SalesExchangeRate" Type="money" Mode="In" />
+    <Parameter Name="SalesForeign" Type="money" Mode="In" />
+    <Parameter Name="SalesHome" Type="money" Mode="In" />
+    <Parameter Name="Variance" Type="money" Mode="In" />
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+    <Parameter Name="JInvoiceID" Type="int" Mode="In" />
+    <Parameter Name="Cost" Type="money" Mode="In" />
+    <Parameter Name="PrevCostDetailID" Type="int" Mode="In" />
+    <Parameter Name="AmountPaidTillDate" Type="money" Mode="In" />
+    <Parameter Name="PaidOrNot" Type="char" Mode="In" />
+    <Parameter Name="SupplierReference" Type="nvarchar" Mode="In" />
+    <Parameter Name="SupplierPayStatus" Type="char" Mode="In" />
+    <Parameter Name="Lock" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobTypeID" Type="int" Mode="In" />
+    <Parameter Name="JobDate" Type="datetime" Mode="In" />
+    <Parameter Name="ConsignerID" Type="int" Mode="In" />
+    <Parameter Name="ConsigneeID" Type="int" Mode="In" />
+    <Parameter Name="InvoiceToID" Type="int" Mode="In" />
+    <Parameter Name="EmployeeID" Type="int" Mode="In" />
+    <Parameter Name="ShipperID" Type="int" Mode="In" />
+    <Parameter Name="IPTNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="RefNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="BillOfEnquiry" Type="nvarchar" Mode="In" />
+    <Parameter Name="BLDate" Type="datetime" Mode="In" />
+    <Parameter Name="DeliveryOrderNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="BLStatus1" Type="nvarchar" Mode="In" />
+    <Parameter Name="CLFValue" Type="nvarchar" Mode="In" />
+    <Parameter Name="DepositAmount" Type="money" Mode="In" />
+    <Parameter Name="DepositDate" Type="datetime" Mode="In" />
+    <Parameter Name="ReceiptNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="RefundDate" Type="datetime" Mode="In" />
+    <Parameter Name="RefundAmount" Type="money" Mode="In" />
+    <Parameter Name="VesselID" Type="int" Mode="In" />
+    <Parameter Name="VoyageNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="Freight" Type="nvarchar" Mode="In" />
+    <Parameter Name="SailingDate" Type="datetime" Mode="In" />
+    <Parameter Name="ArrivalDate" Type="datetime" Mode="In" />
+    <Parameter Name="MBL" Type="nvarchar" Mode="In" />
+    <Parameter Name="HBL" Type="nvarchar" Mode="In" />
+    <Parameter Name="LoadPortID" Type="int" Mode="In" />
+    <Parameter Name="DestinationPortID" Type="int" Mode="In" />
+    <Parameter Name="DeliveryPlaceID" Type="int" Mode="In" />
+    <Parameter Name="ReceiptPlaceID" Type="int" Mode="In" />
+    <Parameter Name="CountryofOriginID" Type="int" Mode="In" />
+    <Parameter Name="TransporterID" Type="int" Mode="In" />
+    <Parameter Name="CollectionDate" Type="datetime" Mode="In" />
+    <Parameter Name="DeliveryInstructions" Type="nvarchar" Mode="In" />
+    <Parameter Name="TruckRegNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverDetails" Type="nvarchar" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+    <Parameter Name="RotationNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="CarrierID" Type="int" Mode="In" />
+    <Parameter Name="CollectionPoint" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliveryNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliveryPoint" Type="nvarchar" Mode="In" />
+    <Parameter Name="CollectionInstructions" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="int" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="MainJObID" Type="int" Mode="In" />
+    <Parameter Name="DeliveryDate" Type="datetime" Mode="In" />
+    <Parameter Name="DepartingDate" Type="datetime" Mode="In" />
+    <Parameter Name="Flight" Type="nvarchar" Mode="In" />
+    <Parameter Name="MAWB" Type="nvarchar" Mode="In" />
+    <Parameter Name="HAWB" Type="nvarchar" Mode="In" />
+    <Parameter Name="MRN" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliveryOrderDate" Type="datetime" Mode="In" />
+    <Parameter Name="ShippingInstruction" Type="nvarchar" Mode="In" />
+    <Parameter Name="MaxJObID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="SP_InsertJournalEntryForCostUpdation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CostUpdationID" Type="int" Mode="In" />
+    <Parameter Name="AcFinnancialYearId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertJournalEntryForJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="AcFinnancialYearId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertJournalEntryForJobInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="AcFinnancialYearId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertJournalEntryForRecPay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecPayID" Type="int" Mode="In" />
+    <Parameter Name="AcFinnancialYearId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertJournalEntryForRecPay_SupplierPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecPayID" Type="int" Mode="In" />
+    <Parameter Name="AcFinnancialYearId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertPurchaseInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PurchaseInvoiceId" Type="int" Mode="InOut" />
+    <Parameter Name="PurchaseInvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="PurchaseInvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="Reference" Type="nvarchar" Mode="In" />
+    <Parameter Name="LPOReference" Type="nvarchar" Mode="In" />
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+    <Parameter Name="EmployeeeID" Type="int" Mode="In" />
+    <Parameter Name="QuotationNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrencyID" Type="int" Mode="In" />
+    <Parameter Name="ExchangeRate" Type="decimal" Mode="In" />
+    <Parameter Name="CreditDays" Type="int" Mode="In" />
+    <Parameter Name="DueDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcJouranalID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+    <Parameter Name="Discount" Type="decimal" Mode="In" />
+    <Parameter Name="StatusDiscountAmt" Type="bit" Mode="In" />
+    <Parameter Name="OtherCharges" Type="decimal" Mode="In" />
+    <Parameter Name="PaymentTerm" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="DiscountType" Type="int" Mode="In" />
+    <Parameter Name="DiscountValueLC" Type="decimal" Mode="In" />
+    <Parameter Name="DiscountValueFC" Type="decimal" Mode="In" />
+    <Parameter Name="IsShipping" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertRecPay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecPayDate" Type="datetime" Mode="In" />
+    <Parameter Name="DocumentNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+    <Parameter Name="BusinessCentreID" Type="int" Mode="In" />
+    <Parameter Name="BankName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ChequeNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="ChequeDate" Type="datetime" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+    <Parameter Name="AcJournalID" Type="int" Mode="In" />
+    <Parameter Name="StatusRec" Type="bit" Mode="In" />
+    <Parameter Name="StatusEntry" Type="nvarchar" Mode="In" />
+    <Parameter Name="StatusOrigin" Type="nvarchar" Mode="In" />
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="AcCompanyID" Type="int" Mode="In" />
+    <Parameter Name="EXRate" Type="money" Mode="In" />
+    <Parameter Name="FMoney" Type="money" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertRecPayDetailsForCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecPayID" Type="int" Mode="In" />
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="money" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+    <Parameter Name="StatusInvoice" Type="nvarchar" Mode="In" />
+    <Parameter Name="StatusAdvance" Type="bit" Mode="In" />
+    <Parameter Name="statusReceipt" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrencyID" Type="int" Mode="In" />
+    <Parameter Name="InvoiceStatus" Type="int" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertRecPayDetailsForSupplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecPayID" Type="int" Mode="In" />
+    <Parameter Name="InvoiceID" Type="int" Mode="In" />
+    <Parameter Name="Amount" Type="money" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+    <Parameter Name="StatusInvoice" Type="nvarchar" Mode="In" />
+    <Parameter Name="StatusAdvance" Type="bit" Mode="In" />
+    <Parameter Name="statusReceipt" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrencyID" Type="int" Mode="In" />
+    <Parameter Name="InvoiceStatus" Type="int" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertSalesInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SalesInvoiceId" Type="int" Mode="InOut" />
+    <Parameter Name="SalesInvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="SalesInvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="Reference" Type="nvarchar" Mode="In" />
+    <Parameter Name="LPOReference" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+    <Parameter Name="EmployeeeID" Type="int" Mode="In" />
+    <Parameter Name="QuotationNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrencyID" Type="int" Mode="In" />
+    <Parameter Name="EXchangeRate" Type="decimal" Mode="In" />
+    <Parameter Name="CreditDays" Type="int" Mode="In" />
+    <Parameter Name="DueDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcJouranalID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+    <Parameter Name="Discount" Type="decimal" Mode="In" />
+    <Parameter Name="StatusDiscountAmt" Type="bit" Mode="In" />
+    <Parameter Name="OtherCharges" Type="decimal" Mode="In" />
+    <Parameter Name="PaymentTerm" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="DeliveryId" Type="int" Mode="In" />
+    <Parameter Name="DiscountType" Type="int" Mode="In" />
+    <Parameter Name="DiscountValueLC" Type="decimal" Mode="In" />
+    <Parameter Name="DiscountValueFC" Type="decimal" Mode="In" />
+    <Parameter Name="IsShipping" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_JobRegisterReportPrintByJObID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jobId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_LoginUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateCargoContainerBillByJobID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="AcFinnancialYearId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateCostUpdatonStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CostUpdationID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateInvoiceNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="InvoiceNo" Type="int" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobTypeID" Type="int" Mode="In" />
+    <Parameter Name="JobDate" Type="datetime" Mode="In" />
+    <Parameter Name="ConsignerID" Type="int" Mode="In" />
+    <Parameter Name="ConsigneeID" Type="int" Mode="In" />
+    <Parameter Name="InvoiceToID" Type="int" Mode="In" />
+    <Parameter Name="EmployeeID" Type="int" Mode="In" />
+    <Parameter Name="ShipperID" Type="int" Mode="In" />
+    <Parameter Name="IPTNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="RefNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="BillOfEnquiry" Type="nvarchar" Mode="In" />
+    <Parameter Name="BLDate" Type="datetime" Mode="In" />
+    <Parameter Name="DeliveryOrderNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="BLStatus1" Type="nvarchar" Mode="In" />
+    <Parameter Name="CLFValue" Type="nvarchar" Mode="In" />
+    <Parameter Name="DepositAmount" Type="money" Mode="In" />
+    <Parameter Name="DepositDate" Type="datetime" Mode="In" />
+    <Parameter Name="ReceiptNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="RefundDate" Type="datetime" Mode="In" />
+    <Parameter Name="RefundAmount" Type="money" Mode="In" />
+    <Parameter Name="VesselID" Type="int" Mode="In" />
+    <Parameter Name="VoyageNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="Freight" Type="nvarchar" Mode="In" />
+    <Parameter Name="SailingDate" Type="datetime" Mode="In" />
+    <Parameter Name="ArrivalDate" Type="datetime" Mode="In" />
+    <Parameter Name="MBL" Type="nvarchar" Mode="In" />
+    <Parameter Name="HBL" Type="nvarchar" Mode="In" />
+    <Parameter Name="LoadPortID" Type="int" Mode="In" />
+    <Parameter Name="DestinationPortID" Type="int" Mode="In" />
+    <Parameter Name="DeliveryPlaceID" Type="int" Mode="In" />
+    <Parameter Name="ReceiptPlaceID" Type="int" Mode="In" />
+    <Parameter Name="CountryofOriginID" Type="int" Mode="In" />
+    <Parameter Name="TransporterID" Type="int" Mode="In" />
+    <Parameter Name="CollectionDate" Type="datetime" Mode="In" />
+    <Parameter Name="DeliveryInstructions" Type="nvarchar" Mode="In" />
+    <Parameter Name="TruckRegNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="DriverDetails" Type="nvarchar" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+    <Parameter Name="RotationNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="CarrierID" Type="int" Mode="In" />
+    <Parameter Name="CollectionPoint" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliveryNote" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliveryPoint" Type="nvarchar" Mode="In" />
+    <Parameter Name="CollectionInstructions" Type="nvarchar" Mode="In" />
+    <Parameter Name="InvoiceNo" Type="int" Mode="In" />
+    <Parameter Name="InvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="JobID" Type="int" Mode="In" />
+    <Parameter Name="MainJobID" Type="int" Mode="In" />
+    <Parameter Name="ShippingInstruction" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliveryDate" Type="datetime" Mode="In" />
+    <Parameter Name="DepartingDate" Type="datetime" Mode="In" />
+    <Parameter Name="Flight" Type="nvarchar" Mode="In" />
+    <Parameter Name="MAWB" Type="nvarchar" Mode="In" />
+    <Parameter Name="HAWB" Type="nvarchar" Mode="In" />
+    <Parameter Name="MRN" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeliveryOrderDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdatePurchaseInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PurchaseInvoiceId" Type="int" Mode="In" />
+    <Parameter Name="PurchaseInvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="PurchaseInvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="Reference" Type="nvarchar" Mode="In" />
+    <Parameter Name="LPOReference" Type="nvarchar" Mode="In" />
+    <Parameter Name="SupplierID" Type="int" Mode="In" />
+    <Parameter Name="EmployeeeID" Type="int" Mode="In" />
+    <Parameter Name="QuotationNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrencyID" Type="int" Mode="In" />
+    <Parameter Name="ExchangeRate" Type="decimal" Mode="In" />
+    <Parameter Name="CreditDays" Type="int" Mode="In" />
+    <Parameter Name="DueDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcJouranalID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+    <Parameter Name="Discount" Type="decimal" Mode="In" />
+    <Parameter Name="StatusDiscountAmt" Type="bit" Mode="In" />
+    <Parameter Name="OtherCharges" Type="decimal" Mode="In" />
+    <Parameter Name="PaymentTerm" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="DiscountType" Type="int" Mode="In" />
+    <Parameter Name="DiscountValueLC" Type="decimal" Mode="In" />
+    <Parameter Name="DiscountValueFC" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateSalesInvoice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SalesInvoiceId" Type="int" Mode="In" />
+    <Parameter Name="SalesInvoiceNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="SalesInvoiceDate" Type="datetime" Mode="In" />
+    <Parameter Name="Reference" Type="nvarchar" Mode="In" />
+    <Parameter Name="LPOReference" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerID" Type="int" Mode="In" />
+    <Parameter Name="EmployeeeID" Type="int" Mode="In" />
+    <Parameter Name="QuotationNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrencyID" Type="int" Mode="In" />
+    <Parameter Name="EXchangeRate" Type="decimal" Mode="In" />
+    <Parameter Name="CreditDays" Type="int" Mode="In" />
+    <Parameter Name="DueDate" Type="datetime" Mode="In" />
+    <Parameter Name="AcJouranalID" Type="int" Mode="In" />
+    <Parameter Name="BranchID" Type="int" Mode="In" />
+    <Parameter Name="Discount" Type="decimal" Mode="In" />
+    <Parameter Name="StatusDiscountAmt" Type="bit" Mode="In" />
+    <Parameter Name="OtherCharges" Type="decimal" Mode="In" />
+    <Parameter Name="PaymentTerm" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Remarks" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="FYearID" Type="int" Mode="In" />
+    <Parameter Name="DeliveryId" Type="int" Mode="In" />
+    <Parameter Name="DiscountType" Type="int" Mode="In" />
+    <Parameter Name="DiscountValueLC" Type="decimal" Mode="In" />
+    <Parameter Name="DiscountValueFC" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="SPGetAllLocalCurrencyCostUpdation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcFinancialYearID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPGetAllLocalCurrencyCustRecievable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcFinancialYearID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPGetAllLocalCurrencyPayble" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AcFinancialYearID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SupOutstanding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupID" Type="int" Mode="In" />
+    <Parameter Name="fromdate" Type="datetime" Mode="In" />
+    <Parameter Name="todate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SupStatement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="YTDSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="SHIPPING_FinalModelStoreContainer">
+    <EntitySet Name="AcAnalysisHeadAllocation" EntityType="Self.AcAnalysisHeadAllocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcCategory" EntityType="Self.AcCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcCompany" EntityType="Self.AcCompany" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcFinancialYear" EntityType="Self.AcFinancialYear" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcGroup" EntityType="Self.AcGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcHead" EntityType="Self.AcHead" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcHeadControl" EntityType="Self.AcHeadControl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcJournalDetail" EntityType="Self.AcJournalDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcJournalMaster" EntityType="Self.AcJournalMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcMemoBankDetails" EntityType="Self.AcMemoBankDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcMemoJournalDetail" EntityType="Self.AcMemoJournalDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcMemoJournalMaster" EntityType="Self.AcMemoJournalMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcOpeningMaster" EntityType="Self.AcOpeningMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcOPInvoiceDetails" EntityType="Self.AcOPInvoiceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcOPInvoiceMaster" EntityType="Self.AcOPInvoiceMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcType" EntityType="Self.AcType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Airline" EntityType="Self.Airline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnalysisGroup" EntityType="Self.AnalysisGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnalysisHead" EntityType="Self.AnalysisHead" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BranchMaster" EntityType="Self.BranchMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carrier" EntityType="Self.Carrier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Commodity" EntityType="Self.Commodity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContainerType" EntityType="Self.ContainerType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CostUpdation" EntityType="Self.CostUpdation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CostUpdationDetails" EntityType="Self.CostUpdationDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CountryMaster" EntityType="Self.CountryMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CreditNote" EntityType="Self.CreditNote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CurrencyMaster" EntityType="Self.CurrencyMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CustomerNotification" EntityType="Self.CustomerNotification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DebitNote" EntityType="Self.DebitNote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemUnit" EntityType="Self.ItemUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JAuditLog" EntityType="Self.JAuditLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JBIllOfEntry" EntityType="Self.JBIllOfEntry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JCargoDescription" EntityType="Self.JCargoDescription" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JContainerDetails" EntityType="Self.JContainerDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JInvoice" EntityType="Self.JInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobGeneration" EntityType="Self.JobGeneration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobMode" EntityType="Self.JobMode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobStatus" EntityType="Self.JobStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobType" EntityType="Self.JobType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JStatus" EntityType="Self.JStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuAccessLevel" EntityType="Self.MenuAccessLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PageControlField" EntityType="Self.PageControlField" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PageControlMaster" EntityType="Self.PageControlMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentTerms" EntityType="Self.PaymentTerms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Port" EntityType="Self.Port" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductServices" EntityType="Self.ProductServices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PurchaseInvoice" EntityType="Self.PurchaseInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PurchaseInvoiceDetails" EntityType="Self.PurchaseInvoiceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RecPay" EntityType="Self.RecPay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RecPayDetails" EntityType="Self.RecPayDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Remarks" EntityType="Self.Remarks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RevenueType" EntityType="Self.RevenueType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesInvoice" EntityType="Self.SalesInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesInvoiceDetails" EntityType="Self.SalesInvoiceDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShippingAgent" EntityType="Self.ShippingAgent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StaffNote" EntityType="Self.StaffNote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupplierTypeMaster" EntityType="Self.SupplierTypeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transporter" EntityType="Self.Transporter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRegistration" EntityType="Self.UserRegistration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Validity" EntityType="Self.Validity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vessel" EntityType="Self.Vessel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Voyage" EntityType="Self.Voyage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AcBankDetails" EntityType="Self.AcBankDetails" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[AcBankDetails].[AcBankDetailID] AS [AcBankDetailID], 
+[AcBankDetails].[AcJournalID] AS [AcJournalID], 
+[AcBankDetails].[BankName] AS [BankName], 
+[AcBankDetails].[ChequeNo] AS [ChequeNo], 
+[AcBankDetails].[ChequeDate] AS [ChequeDate], 
+[AcBankDetails].[PartyName] AS [PartyName], 
+[AcBankDetails].[StatusTrans] AS [StatusTrans], 
+[AcBankDetails].[StatusReconciled] AS [StatusReconciled], 
+[AcBankDetails].[ValueDate] AS [ValueDate]
+FROM [dbo].[AcBankDetails] AS [AcBankDetails]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AcHeadAssign" EntityType="Self.AcHeadAssign" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[AcHeadAssign].[ID] AS [ID], 
+[AcHeadAssign].[ProvisionCostControlAcID] AS [ProvisionCostControlAcID], 
+[AcHeadAssign].[AccruedCostControlAcID] AS [AccruedCostControlAcID], 
+[AcHeadAssign].[OpenJobRevenueAcID] AS [OpenJobRevenueAcID], 
+[AcHeadAssign].[CustomerControlAcID] AS [CustomerControlAcID], 
+[AcHeadAssign].[CashControlAcID] AS [CashControlAcID], 
+[AcHeadAssign].[SupplierControlAcID] AS [SupplierControlAcID]
+FROM [dbo].[AcHeadAssign] AS [AcHeadAssign]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="qryCustomerStatement" EntityType="Self.qryCustomerStatement" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[qryCustomerStatement].[InvoiceID] AS [InvoiceID], 
+[qryCustomerStatement].[InvoiceToID] AS [InvoiceToID], 
+[qryCustomerStatement].[JobCode] AS [JobCode], 
+[qryCustomerStatement].[InvoiceNo] AS [InvoiceNo], 
+[qryCustomerStatement].[InvoiceDate] AS [InvoiceDate], 
+[qryCustomerStatement].[AmtToBeReceived] AS [AmtToBeReceived], 
+[qryCustomerStatement].[AmtAlreadyReceived] AS [AmtAlreadyReceived], 
+[qryCustomerStatement].[REMARKS] AS [REMARKS], 
+[qryCustomerStatement].[EmployeeID] AS [EmployeeID]
+FROM [dbo].[qryCustomerStatement] AS [qryCustomerStatement]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="qrySupplierOutstanding" EntityType="Self.qrySupplierOutstanding" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[qrySupplierOutstanding].[InvoiceID] AS [InvoiceID], 
+[qrySupplierOutstanding].[InvoiceNo] AS [InvoiceNo], 
+[qrySupplierOutstanding].[InvoiceDate] AS [InvoiceDate], 
+[qrySupplierOutstanding].[SupplierID] AS [SupplierID], 
+[qrySupplierOutstanding].[AmtToBeReceived] AS [AmtToBeReceived], 
+[qrySupplierOutstanding].[AmtAlreadyReceived] AS [AmtAlreadyReceived], 
+[qrySupplierOutstanding].[JobCode] AS [JobCode], 
+[qrySupplierOutstanding].[EmployeeID] AS [EmployeeID], 
+[qrySupplierOutstanding].[JobID] AS [JobID]
+FROM [dbo].[qrySupplierOutstanding] AS [qrySupplierOutstanding]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_AcCompany_CountryMaster" Association="Self.FK_AcCompany_CountryMaster">
+      <End Role="CountryMaster" EntitySet="CountryMaster" />
+      <End Role="AcCompany" EntitySet="AcCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AcCompany_CurrencyMaster" Association="Self.FK_AcCompany_CurrencyMaster">
+      <End Role="CurrencyMaster" EntitySet="CurrencyMaster" />
+      <End Role="AcCompany" EntitySet="AcCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AcCompany_Designation" Association="Self.FK_AcCompany_Designation">
+      <End Role="Designation" EntitySet="Designation" />
+      <End Role="AcCompany" EntitySet="AcCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AcCompany_Location" Association="Self.FK_AcCompany_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="AcCompany" EntitySet="AcCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AcGroup_AcCategory" Association="Self.FK_AcGroup_AcCategory">
+      <End Role="AcCategory" EntitySet="AcCategory" />
+      <End Role="AcGroup" EntitySet="AcGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AcOpeningMaster_AcCompany" Association="Self.FK_AcOpeningMaster_AcCompany">
+      <End Role="AcCompany" EntitySet="AcCompany" />
+      <End Role="AcOpeningMaster" EntitySet="AcOpeningMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AcOpeningMaster_AcFinancialYear" Association="Self.FK_AcOpeningMaster_AcFinancialYear">
+      <End Role="AcFinancialYear" EntitySet="AcFinancialYear" />
+      <End Role="AcOpeningMaster" EntitySet="AcOpeningMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AcOpeningMaster_AcHead" Association="Self.FK_AcOpeningMaster_AcHead">
+      <End Role="AcHead" EntitySet="AcHead" />
+      <End Role="AcOpeningMaster" EntitySet="AcOpeningMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnalysisHead_AcCompany" Association="Self.FK_AnalysisHead_AcCompany">
+      <End Role="AcCompany" EntitySet="AcCompany" />
+      <End Role="AnalysisHead" EntitySet="AnalysisHead" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnalysisHead_AnalysisGroup" Association="Self.FK_AnalysisHead_AnalysisGroup">
+      <End Role="AnalysisGroup" EntitySet="AnalysisGroup" />
+      <End Role="AnalysisHead" EntitySet="AnalysisHead" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchMaster_CountryMaster" Association="Self.FK_BranchMaster_CountryMaster">
+      <End Role="CountryMaster" EntitySet="CountryMaster" />
+      <End Role="BranchMaster" EntitySet="BranchMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchMaster_CurrencyMaster" Association="Self.FK_BranchMaster_CurrencyMaster">
+      <End Role="CurrencyMaster" EntitySet="CurrencyMaster" />
+      <End Role="BranchMaster" EntitySet="BranchMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchMaster_Designation" Association="Self.FK_BranchMaster_Designation">
+      <End Role="Designation" EntitySet="Designation" />
+      <End Role="BranchMaster" EntitySet="BranchMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BranchMaster_Location" Association="Self.FK_BranchMaster_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="BranchMaster" EntitySet="BranchMaster" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
