@@ -23,5 +23,6 @@ namespace DAL
         public Nullable<int> UserID { get; set; }
         public string Prefix { get; set; }
         public Nullable<bool> StatusControlAc { get; set; }
+        public string AccountDescription { get; set; }
     }
 }

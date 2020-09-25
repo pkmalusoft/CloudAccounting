@@ -7,3 +7,12 @@ D:\GitProject\ShippingFinalCode\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cac
 D:\GitProject\ShippingFinalCode\DAL\obj\Release\DAL.csproj.CopyComplete
 D:\GitProject\ShippingFinalCode\DAL\obj\Release\DAL.dll
 D:\GitProject\ShippingFinalCode\DAL\obj\Release\DAL.pdb
+F:\MalusoftIndia\SmallBusiness\accounts\DAL\bin\Release\DAL.dll.config
+F:\MalusoftIndia\SmallBusiness\accounts\DAL\bin\Release\DAL.dll
+F:\MalusoftIndia\SmallBusiness\accounts\DAL\bin\Release\DAL.pdb
+F:\MalusoftIndia\SmallBusiness\accounts\DAL\bin\Release\EntityFramework.dll
+F:\MalusoftIndia\SmallBusiness\accounts\DAL\bin\Release\EntityFramework.xml
+F:\MalusoftIndia\SmallBusiness\accounts\DAL\obj\Release\DAL.csprojAssemblyReference.cache
+F:\MalusoftIndia\SmallBusiness\accounts\DAL\obj\Release\DAL.csproj.CopyComplete
+F:\MalusoftIndia\SmallBusiness\accounts\DAL\obj\Release\DAL.dll
+F:\MalusoftIndia\SmallBusiness\accounts\DAL\obj\Release\DAL.pdb
