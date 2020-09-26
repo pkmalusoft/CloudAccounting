@@ -184,8 +184,8 @@ new AcGroupModel()
         [HttpGet]
         public JsonResult GetAcCategoryByParentid(int parentId)
         {
-            var groups = (from d in context.AcGroups where d.AcGroupID == parentId select d).FirstOrDefault();
-            return Json(groups.AcCategoryID, JsonRequestBehavior.AllowGet);
+            var groups = (from d in  context.AcGroups where d.AcGroupID == parentId select d).FirstOrDefault();
+            return Json(new { categoryid = groups.AcCategoryID, acttypeid = groups.AcTypeId }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -321,7 +321,7 @@ new AcGroupModel()
             var actype = Getactype(c.AcTypeId);
 
             if (isexist == true)
-            {
+            { 
 
                 var acgroup = (from d in context.AcGroups where d.AcGroupID == c.AcGroupID select d).FirstOrDefault();
                 acgroup.ParentID = c.AcGroup;
