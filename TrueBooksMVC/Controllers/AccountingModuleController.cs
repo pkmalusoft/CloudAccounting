@@ -184,8 +184,8 @@ new AcGroupModel()
         [HttpGet]
         public JsonResult GetAcCategoryByParentid(int parentId)
         {
-            var groups = (from d in context.AcGroups where d.AcGroupID == parentId select d).FirstOrDefault();
-            return Json(groups.AcCategoryID, JsonRequestBehavior.AllowGet);
+            var groups = (from d in  context.AcGroups where d.AcGroupID == parentId select d).FirstOrDefault();
+            return Json(new { categoryid = groups.AcCategoryID, acttypeid = groups.AcTypeId }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -321,7 +321,7 @@ new AcGroupModel()
             var actype = Getactype(c.AcTypeId);
 
             if (isexist == true)
-            {
+            { 
 
                 var acgroup = (from d in context.AcGroups where d.AcGroupID == c.AcGroupID select d).FirstOrDefault();
                 acgroup.ParentID = c.AcGroup;
@@ -489,7 +489,8 @@ new AcGroupModel()
 
         public ActionResult IndexAcHead()
         {
-            return View(context.AcHeadSelectAll(Convert.ToInt32(Session["AcCompanyID"].ToString())));
+            //return View(context.AcHeadSelectAll(Convert.ToInt32(Session["AcCompanyID"].ToString())));
+            return View(context.AcHeadSelectAll(Convert.ToInt32(Session["branchid"].ToString())));
         }
 
         public ActionResult DeleteAcHead(int id)
@@ -523,12 +524,28 @@ new AcGroupModel()
             {
                 id = x.AcHeadID + 1;
             }
-            context.AcHeadInsert(id, a.AcHeadKey, a.AcHead1, a.AcGroupID, Convert.ToInt32(Session["AcCompanyID"].ToString()), a.Prefix);
+
+            AcHead v = new AcHead();
+            v.AcHeadID = id;
+            v.AcHeadKey = a.AcHeadKey;
+            v.AcHead1 = a.AcHead1;
+            v.AccountDescription = a.AccountDescription;
+            v.AcGroupID = a.AcGroupID;
+            v.UserID = Convert.ToInt32(Session["UserID"].ToString());
+            v.AcBranchID =Convert.ToInt32(Session["branchid"].ToString());
+            v.Prefix = a.Prefix;
+            v.StatusHide = false;
+            v.StatusControlAc = false;
+            context.AcHeads.Add(v);
+            context.SaveChanges();
+
+            //context.AcHeadInsert(id, a.AcHeadKey, a.AcHead1, a.AcGroupID, Convert.ToInt32(Session["AcCompanyID"].ToString()), a.Prefix);
             var acheadfrompage = Convert.ToInt32(Session["AcheadPage"].ToString());
             if (acheadfrompage == 1)
             {
                 ViewBag.SuccessMsg = "You have successfully created Account Head.";
-                return View("IndexAcHead", context.AcHeadSelectAll(Convert.ToInt32(Session["AcCompanyID"].ToString())));
+                //return View("IndexAcHead", context.AcHeadSelectAll(Convert.ToInt32(Session["AcCompanyID"].ToString())));
+                return RedirectToAction("IndexAcHead");
             }
             else
             {
@@ -539,17 +556,38 @@ new AcGroupModel()
 
         public ActionResult EditAcHead(int id)
         {
-            var result = context.AcHeadSelectByID(id);
+            AcHeadSelectByID_Result result = new AcHeadSelectByID_Result();
+
+            var achead = context.AcHeads.Find(id);  // AcHeadSelectByID(id);
+            result.AcHeadID = achead.AcHeadID;
+            result.AcHead = achead.AcHead1;
+            result.AcHeadKey = achead.AcHeadKey;
+            result.AcGroupID = achead.AcGroupID;
+            result.AccountDescription = achead.AccountDescription;
+            result.Prefix = achead.Prefix;
+            //var result = context.AcHeadSelectByID(id);
             ViewBag.groups = GetAllAcGroupsByBranch(Convert.ToInt32(Session["branchid"].ToString()));
-            return View(result.FirstOrDefault());
+            return View(result);
         }
 
         [HttpPost]
         public ActionResult EditAcHead(AcHeadSelectByID_Result a)
         {
-            context.AcHeadUpdate(a.AcHeadKey, a.AcHeadID, a.AcHead, a.AcGroupID, a.Prefix);
+            //context.AcHeadUpdate(a.AcHeadKey, a.AcHeadID, a.AcHead, a.AcGroupID, a.Prefix);
+            AcHead v = context.AcHeads.Find(a.AcHeadID);
+
+            v.AcHeadKey = a.AcHeadKey;
+            v.AcHead1 = a.AcHead;
+            v.AccountDescription = a.AccountDescription;
+            v.AcGroupID = a.AcGroupID;
+            v.UserID = Convert.ToInt32(Session["UserID"].ToString());
+            v.AcBranchID= Convert.ToInt32(Session["branchid"].ToString());
+            v.Prefix = a.Prefix;
+            //v.StatusControlAC = 0;
+            context.Entry(v).State = EntityState.Modified;
+            context.SaveChanges();
             ViewBag.SuccessMsg = "You have successfully updated Account Head.";
-            return View("IndexAcHead", context.AcHeadSelectAll(Convert.ToInt32(Session["AcCompanyID"].ToString())));
+            return RedirectToAction("IndexAcHead"); //, context.AcHeadSelectAll(Convert.ToInt32(Session["AcCompanyID"].ToString())));
         }
 
 

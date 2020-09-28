@@ -115,6 +115,8 @@ warning 6002: The table/view 'malusoft_accounts.dbo.AcBankDetails' does not have
           <Property Name="UserID" Type="int" />
           <Property Name="Prefix" Type="nchar" MaxLength="10" />
           <Property Name="StatusControlAc" Type="bit" />
+          <Property Name="AcBranchID" Type="int" />
+          <Property Name="AccountDescription" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'malusoft_accounts.dbo.AcHeadAssign' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3002,9 +3004,6 @@ FROM [dbo].[qrySupplierOutstanding] AS [qrySupplierOutstanding]</DefiningQuery>
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="Prefix" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="AcHeadSelectAll" ReturnType="Collection(SHIPPING_FinalModel.AcHeadSelectAll_Result)">
-          <Parameter Name="BranchID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="AcHeadSelectByID" ReturnType="Collection(SHIPPING_FinalModel.AcHeadSelectByID_Result)">
           <Parameter Name="AcHeadID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -3971,6 +3970,9 @@ FROM [dbo].[qrySupplierOutstanding] AS [qrySupplierOutstanding]</DefiningQuery>
           <EntitySet Name="JStatus" EntityType="SHIPPING_FinalModel.JStatu" />
           <EntitySet Name="AcTypes" EntityType="SHIPPING_FinalModel.AcType" />
           <EntitySet Name="CustomerNotifications" EntityType="SHIPPING_FinalModel.CustomerNotification" />
+          <FunctionImport Name="AcHeadSelectAll" ReturnType="Collection(SHIPPING_FinalModel.AcHeadSelectAll_Result)">
+            <Parameter Name="BranchID" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_GetUserDetailForEdit_Result">
           <Property Type="Int32" Name="UserID" Nullable="false" />
@@ -4687,6 +4689,8 @@ FROM [dbo].[qrySupplierOutstanding] AS [qrySupplierOutstanding]</DefiningQuery>
           <Property Type="Boolean" Name="StatusControlAc" />
           <NavigationProperty Name="AcOpeningMasters" Relationship="SHIPPING_FinalModel.FK_AcOpeningMaster_AcHead" FromRole="AcHead" ToRole="AcOpeningMaster" />
           <NavigationProperty Name="AcJournalDetails" Relationship="SHIPPING_FinalModel.FK_AcJournalDetail_AcHead" FromRole="AcHead" ToRole="AcJournalDetail" />
+          <Property Name="AcBranchID" Type="Int32" />
+          <Property Name="AccountDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="AcHeadAssign">
           <Key>
@@ -4836,19 +4840,6 @@ FROM [dbo].[qrySupplierOutstanding] AS [qrySupplierOutstanding]</DefiningQuery>
           <Property Type="String" Name="CustomerControl" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CashControl" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="SupplierControl" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="AcHeadSelectAll_Result">
-          <Property Type="Int32" Name="AcHeadID" Nullable="false" />
-          <Property Type="String" Name="AcHeadKey" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="AcHead" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="AcGroupID" Nullable="true" />
-          <Property Type="Int32" Name="ParentID" Nullable="true" />
-          <Property Type="Int32" Name="HeadOrder" Nullable="true" />
-          <Property Type="Boolean" Name="StatusHide" Nullable="true" />
-          <Property Type="Int32" Name="UserID" Nullable="true" />
-          <Property Type="String" Name="Prefix" Nullable="true" MaxLength="10" />
-          <Property Type="Boolean" Name="StatusControlAc" Nullable="true" />
-          <Property Type="String" Name="AcGroup" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="AcHeadSelectByID_Result">
           <Property Type="Int32" Name="AcHeadID" Nullable="false" />
@@ -7229,6 +7220,22 @@ FROM [dbo].[qrySupplierOutstanding] AS [qrySupplierOutstanding]</DefiningQuery>
           <Property Name="IsWhatsapp" Type="Boolean" />
           <Property Name="PageTypeId" Type="Int32" />
         </EntityType>
+        <ComplexType Name="AcHeadSelectAll_Result">
+          <Property Type="Int32" Name="AcHeadID" Nullable="false" />
+          <Property Type="String" Name="AcHeadKey" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="AcHead" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="AcGroupID" Nullable="true" />
+          <Property Type="Int32" Name="ParentID" Nullable="true" />
+          <Property Type="Int32" Name="HeadOrder" Nullable="true" />
+          <Property Type="Boolean" Name="StatusHide" Nullable="true" />
+          <Property Type="Int32" Name="UserID" Nullable="true" />
+          <Property Type="String" Name="Prefix" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="StatusControlAc" Nullable="true" />
+          <Property Type="Int32" Name="AcBranchID" Nullable="true" />
+          <Property Type="String" Name="AccountDescription" Nullable="true" />
+          <Property Type="String" Name="AcGroup" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AccountType" Nullable="true" MaxLength="100" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -8092,6 +8099,8 @@ FROM [dbo].[qrySupplierOutstanding] AS [qrySupplierOutstanding]</DefiningQuery>
           <EntitySetMapping Name="AcHeads">
             <EntityTypeMapping TypeName="SHIPPING_FinalModel.AcHead">
               <MappingFragment StoreEntitySet="AcHead">
+                <ScalarProperty Name="AccountDescription" ColumnName="AccountDescription" />
+                <ScalarProperty Name="AcBranchID" ColumnName="AcBranchID" />
                 <ScalarProperty Name="StatusControlAc" ColumnName="StatusControlAc" />
                 <ScalarProperty Name="Prefix" ColumnName="Prefix" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -8284,23 +8293,6 @@ FROM [dbo].[qrySupplierOutstanding] AS [qrySupplierOutstanding]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="AcHeadAssignUpdate" FunctionName="SHIPPING_FinalModel.Store.AcHeadAssignUpdate" />
           <FunctionImportMapping FunctionImportName="AcHeadDelete" FunctionName="SHIPPING_FinalModel.Store.AcHeadDelete" />
           <FunctionImportMapping FunctionImportName="AcHeadInsert" FunctionName="SHIPPING_FinalModel.Store.AcHeadInsert" />
-          <FunctionImportMapping FunctionImportName="AcHeadSelectAll" FunctionName="SHIPPING_FinalModel.Store.AcHeadSelectAll">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SHIPPING_FinalModel.AcHeadSelectAll_Result">
-                <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
-                <ScalarProperty Name="AcHeadKey" ColumnName="AcHeadKey" />
-                <ScalarProperty Name="AcHead" ColumnName="AcHead" />
-                <ScalarProperty Name="AcGroupID" ColumnName="AcGroupID" />
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="HeadOrder" ColumnName="HeadOrder" />
-                <ScalarProperty Name="StatusHide" ColumnName="StatusHide" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
-                <ScalarProperty Name="StatusControlAc" ColumnName="StatusControlAc" />
-                <ScalarProperty Name="AcGroup" ColumnName="AcGroup" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AcHeadSelectByID" FunctionName="SHIPPING_FinalModel.Store.AcHeadSelectByID">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SHIPPING_FinalModel.AcHeadSelectByID_Result">
@@ -10798,6 +10790,26 @@ FROM [dbo].[qrySupplierOutstanding] AS [qrySupplierOutstanding]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AcHeadSelectAll" FunctionName="SHIPPING_FinalModel.Store.AcHeadSelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SHIPPING_FinalModel.AcHeadSelectAll_Result">
+                <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+                <ScalarProperty Name="AcHeadKey" ColumnName="AcHeadKey" />
+                <ScalarProperty Name="AcHead" ColumnName="AcHead" />
+                <ScalarProperty Name="AcGroupID" ColumnName="AcGroupID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="HeadOrder" ColumnName="HeadOrder" />
+                <ScalarProperty Name="StatusHide" ColumnName="StatusHide" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="StatusControlAc" ColumnName="StatusControlAc" />
+                <ScalarProperty Name="AcBranchID" ColumnName="AcBranchID" />
+                <ScalarProperty Name="AccountDescription" ColumnName="AccountDescription" />
+                <ScalarProperty Name="AcGroup" ColumnName="AcGroup" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
          
           </EntityContainerMapping>
       </Mapping>

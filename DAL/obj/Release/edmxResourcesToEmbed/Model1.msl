@@ -858,6 +858,8 @@
     <EntitySetMapping Name="AcHeads">
       <EntityTypeMapping TypeName="SHIPPING_FinalModel.AcHead">
         <MappingFragment StoreEntitySet="AcHead">
+          <ScalarProperty Name="AccountDescription" ColumnName="AccountDescription" />
+          <ScalarProperty Name="AcBranchID" ColumnName="AcBranchID" />
           <ScalarProperty Name="StatusControlAc" ColumnName="StatusControlAc" />
           <ScalarProperty Name="Prefix" ColumnName="Prefix" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -1050,23 +1052,6 @@
     <FunctionImportMapping FunctionImportName="AcHeadAssignUpdate" FunctionName="SHIPPING_FinalModel.Store.AcHeadAssignUpdate" />
     <FunctionImportMapping FunctionImportName="AcHeadDelete" FunctionName="SHIPPING_FinalModel.Store.AcHeadDelete" />
     <FunctionImportMapping FunctionImportName="AcHeadInsert" FunctionName="SHIPPING_FinalModel.Store.AcHeadInsert" />
-    <FunctionImportMapping FunctionImportName="AcHeadSelectAll" FunctionName="SHIPPING_FinalModel.Store.AcHeadSelectAll">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SHIPPING_FinalModel.AcHeadSelectAll_Result">
-          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
-          <ScalarProperty Name="AcHeadKey" ColumnName="AcHeadKey" />
-          <ScalarProperty Name="AcHead" ColumnName="AcHead" />
-          <ScalarProperty Name="AcGroupID" ColumnName="AcGroupID" />
-          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-          <ScalarProperty Name="HeadOrder" ColumnName="HeadOrder" />
-          <ScalarProperty Name="StatusHide" ColumnName="StatusHide" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
-          <ScalarProperty Name="StatusControlAc" ColumnName="StatusControlAc" />
-          <ScalarProperty Name="AcGroup" ColumnName="AcGroup" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="AcHeadSelectByID" FunctionName="SHIPPING_FinalModel.Store.AcHeadSelectByID">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SHIPPING_FinalModel.AcHeadSelectByID_Result">
@@ -3562,5 +3547,25 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AcHeadSelectAll" FunctionName="SHIPPING_FinalModel.Store.AcHeadSelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SHIPPING_FinalModel.AcHeadSelectAll_Result">
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="AcHeadKey" ColumnName="AcHeadKey" />
+          <ScalarProperty Name="AcHead" ColumnName="AcHead" />
+          <ScalarProperty Name="AcGroupID" ColumnName="AcGroupID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="HeadOrder" ColumnName="HeadOrder" />
+          <ScalarProperty Name="StatusHide" ColumnName="StatusHide" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="StatusControlAc" ColumnName="StatusControlAc" />
+          <ScalarProperty Name="AcBranchID" ColumnName="AcBranchID" />
+          <ScalarProperty Name="AccountDescription" ColumnName="AccountDescription" />
+          <ScalarProperty Name="AcGroup" ColumnName="AcGroup" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

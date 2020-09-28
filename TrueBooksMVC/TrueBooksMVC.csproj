@@ -1472,7 +1472,6 @@
     <Content Include="Content\img\logo.ico" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logo2.jpg" />
-    <Content Include="Content\img\logotri.png" />
     <Content Include="Content\img\logo_truebook.png" />
     <Content Include="Content\img\logo_truebookNew.png" />
     <Content Include="Content\img\per.png" />
@@ -2649,8 +2648,8 @@
     <Content Include="assets\sass\quillpro\quillpro\_quillpro-print.scss" />
     <Content Include="assets\sass\quillpro\quillpro\_quillpro-variables.scss" />
     <Content Include="WorkSmarter.jpg" />
-    <None Include="Properties\PublishProfiles\Shipping.pubxml" />
     <Content Include="Reports\Shipping_Test_18_12_2016.bak" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\Highcharts\highcharts.js" />
     <Content Include="Scripts\Highcharts\Home.js" />
@@ -3915,7 +3914,6 @@
     <Content Include="Views\SupplierPayment\SupplierTradePaymentDetails.cshtml" />
     <Content Include="Views\SupplierPayment\_GetAllTradeSupplierByDate.cshtml" />
     <Content Include="Views\JobStatus\Create.cshtml" />
-    <Content Include="Views\JobStatus\Delete.cshtml" />
     <Content Include="Views\JobStatus\Details.cshtml" />
     <Content Include="Views\JobStatus\Edit.cshtml" />
     <Content Include="Views\JobStatus\Index.cshtml" />

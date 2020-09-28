@@ -30,6 +30,8 @@ namespace DAL
         public Nullable<int> UserID { get; set; }
         public string Prefix { get; set; }
         public Nullable<bool> StatusControlAc { get; set; }
+        public Nullable<int> AcBranchID { get; set; }
+        public string AccountDescription { get; set; }
     
         public virtual ICollection<AcOpeningMaster> AcOpeningMasters { get; set; }
         public virtual ICollection<AcJournalDetail> AcJournalDetails { get; set; }
