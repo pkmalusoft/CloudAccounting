@@ -9,3 +9,9 @@ F:\MalusoftIndia\SmallBusiness\accounts\BAL\bin\Release\BAL.pdb
 F:\MalusoftIndia\SmallBusiness\accounts\BAL\obj\Release\BAL.csprojAssemblyReference.cache
 F:\MalusoftIndia\SmallBusiness\accounts\BAL\obj\Release\BAL.dll
 F:\MalusoftIndia\SmallBusiness\accounts\BAL\obj\Release\BAL.pdb
+D:\GitProject\Accounts2020\CloudAccounting\BAL\bin\Release\BAL.dll
+D:\GitProject\Accounts2020\CloudAccounting\BAL\bin\Release\BAL.pdb
+D:\GitProject\Accounts2020\CloudAccounting\BAL\obj\Release\BAL.csprojAssemblyReference.cache
+D:\GitProject\Accounts2020\CloudAccounting\BAL\obj\Release\BAL.csproj.CoreCompileInputs.cache
+D:\GitProject\Accounts2020\CloudAccounting\BAL\obj\Release\BAL.dll
+D:\GitProject\Accounts2020\CloudAccounting\BAL\obj\Release\BAL.pdb

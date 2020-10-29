@@ -296,6 +296,7 @@
     <Compile Include="Models\Dropdown.cs" />
     <Compile Include="Models\EDIModel.cs" />
     <Compile Include="Models\EditCommanFu.cs" />
+    <Compile Include="Models\EmailDAO.cs" />
     <Compile Include="Models\EmployeeDesignationVM.cs" />
     <Compile Include="Models\GetAllCostUpdation_Result.cs" />
     <Compile Include="Models\JobAnalysisReportVM.cs" />
@@ -327,6 +328,7 @@
     <Compile Include="Models\SourceMastersModel.cs" />
     <Compile Include="Models\StaffNoteModel.cs" />
     <Compile Include="Models\SupplierLedgerReportVM.cs" />
+    <Compile Include="Models\UserLoginVM.cs" />
     <Compile Include="Models\UserRegistrationRoleVM.cs" />
     <Compile Include="Models\UserRoleVM.cs" />
     <Compile Include="Models\ValidityVM.cs" />
@@ -1384,6 +1386,7 @@
     <Content Include="Content\css\bootstrap-inputs.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\skins\_all-skins.min.css" />
+    <Content Include="Content\dist\css\Home.css" />
     <Content Include="Content\dist\img\avatar.png" />
     <Content Include="Content\dist\img\avatar04.png" />
     <Content Include="Content\dist\img\avatar2.png" />
@@ -1474,6 +1477,8 @@
     <Content Include="Content\img\logo2.jpg" />
     <Content Include="Content\img\logo_truebook.png" />
     <Content Include="Content\img\logo_truebookNew.png" />
+    <Content Include="Content\img\malu.png" />
+    <Content Include="Content\img\malusoft.png" />
     <Content Include="Content\img\per.png" />
     <Content Include="Content\img\photo1.png" />
     <Content Include="Content\img\photo2.png" />
@@ -3932,6 +3937,7 @@
     <Content Include="Views\CreditNote\ServiceCreate.cshtml" />
     <Content Include="Views\DebitNote\ServiceList.cshtml" />
     <Content Include="Views\DebitNote\ServiceIndex.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Logo\" />

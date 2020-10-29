@@ -16,3 +16,13 @@ F:\MalusoftIndia\SmallBusiness\accounts\DAL\obj\Release\DAL.csprojAssemblyRefere
 F:\MalusoftIndia\SmallBusiness\accounts\DAL\obj\Release\DAL.csproj.CopyComplete
 F:\MalusoftIndia\SmallBusiness\accounts\DAL\obj\Release\DAL.dll
 F:\MalusoftIndia\SmallBusiness\accounts\DAL\obj\Release\DAL.pdb
+D:\GitProject\Accounts2020\CloudAccounting\DAL\bin\Release\DAL.dll.config
+D:\GitProject\Accounts2020\CloudAccounting\DAL\bin\Release\DAL.dll
+D:\GitProject\Accounts2020\CloudAccounting\DAL\bin\Release\DAL.pdb
+D:\GitProject\Accounts2020\CloudAccounting\DAL\bin\Release\EntityFramework.dll
+D:\GitProject\Accounts2020\CloudAccounting\DAL\bin\Release\EntityFramework.xml
+D:\GitProject\Accounts2020\CloudAccounting\DAL\obj\Release\DAL.csprojAssemblyReference.cache
+D:\GitProject\Accounts2020\CloudAccounting\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
+D:\GitProject\Accounts2020\CloudAccounting\DAL\obj\Release\DAL.csproj.CopyComplete
+D:\GitProject\Accounts2020\CloudAccounting\DAL\obj\Release\DAL.dll
+D:\GitProject\Accounts2020\CloudAccounting\DAL\obj\Release\DAL.pdb
