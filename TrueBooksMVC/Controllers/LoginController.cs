@@ -158,11 +158,10 @@ namespace TrueBooksMVC.Controllers
 
                     return RedirectToAction("Home", "Home");
                 }
-                ViewBag.ErrorMessage = "Invalid Credentials";
-                ViewBag.Branch = entity.BranchMasters.ToList();
 
-                ViewBag.fyears = entity.AcFinancialYearSelect(Convert.ToInt32(Session["branchid"])).ToList();
-                return View();
+                Session["ForgotStatus"] = "Forgot";
+                Session["StatusMessage"] = "Invalid EmailId!";
+                return RedirectToAction("Index", "Login");
             }
             else
             {
